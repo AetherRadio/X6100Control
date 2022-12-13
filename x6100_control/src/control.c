@@ -7,7 +7,7 @@
  *  Copyright (c) 2022 Rui Oliveira aka CT7ALW
  */
 
-#include "aether_x6100/control/control.h"
+#include "aether_radio/x6100_control/control.h"
 
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
@@ -155,7 +155,7 @@ static uint8_t band_index(int freq)
         }
         return 19;
     }
-  
+
   return 15;
 }
 

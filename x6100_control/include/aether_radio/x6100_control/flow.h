@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "aether_x6100/control/api.h"
+#include "aether_radio/x6100_control/api.h"
 
 #include <stdbool.h>
 #include <stdint.h>
