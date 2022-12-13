@@ -26,6 +26,9 @@ include(CheckIPOSupported)
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
+# Professional CMake 27.1.1
+set(CMAKE_INSTALL_DOCDIR ${CMAKE_INSTALL_DATAROOTDIR}/doc/${PROJECT_NAME})
+
 # Local modules
 include(cmake/output_structure.cmake)
 include(cmake/install_structure.cmake)
