@@ -39,3 +39,6 @@ target_include_directories(aether_x6100_control #
                            PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 install(TARGETS aether_x6100_control)
+
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/aether_radio
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
