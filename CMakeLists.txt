@@ -26,6 +26,7 @@ include(GenerateExportHeader)
 include(CheckCXXCompilerFlag)
 include(CheckIPOSupported)
 include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
 
 # Local modules
 include(cmake/output_structure.cmake)
