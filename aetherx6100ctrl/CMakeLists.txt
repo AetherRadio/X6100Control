@@ -18,7 +18,9 @@ generate_export_header(
   EXPORT_FILE_NAME
   ${AETHERX6100CTR_EXPORT_HEADER_FILE})
 
-target_include_directories(aetherx6100ctrl PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/include)
+target_include_directories(aetherx6100ctrl
+                           PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>)
+
 target_sources(aetherx6100ctrl
                PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/${AETHERX6100CTR_EXPORT_HEADER_FILE})
 
