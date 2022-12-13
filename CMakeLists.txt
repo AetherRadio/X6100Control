@@ -11,9 +11,6 @@ option(BUILD_SHARED_LIBS "Build libraries as shared libraries." ON) # CMake opti
 
 option(AETHERX6100CTRL_DEVELOPER_MODE "Enable developer helpers." OFF)
 
-option(AETHERX6100CTRL_BUILD_TEST "Build the test application." ON)
-option(AETHERX6100CTRL_BUILD_SERVER "Build the WAMP server application." OFF)
-
 option(AETHERX6100CTRL_SET_CXX_STANDARD "Set the C++ standard directly." ON)
 option(AETHERX6100CTRL_USE_LTO "Enable link-time optimization when possible." ON)
 option(AETHERX6100CTRL_USE_FAST_MATH "Use fast math when possible (-ffast-math or /fp:fast)." OFF)
