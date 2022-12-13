@@ -45,3 +45,6 @@ include(cmake/developer_mode.cmake)
 
 # Projects
 add_subdirectory(x6100_control)
+
+# Packaging
+include(cmake/packaging.cmake)
