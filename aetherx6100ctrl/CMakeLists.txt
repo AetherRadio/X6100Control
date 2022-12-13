@@ -4,8 +4,13 @@ endif()
 
 add_library(aetherx6100ctrl)
 
-set_target_properties(aetherx6100ctrl PROPERTIES OUTPUT_NAME "aetherx6100ctrl" # -
-                                                 DEFINE_SYMBOL "AETHERX6100CTR_EXPORTING")
+set_target_properties(
+  aetherx6100ctrl
+  PROPERTIES EXPORT_NAME "aetherx6100ctrl" # -
+             OUTPUT_NAME "aetherx6100ctrl" # -
+             DEFINE_SYMBOL "AETHERX6100CTR_EXPORTING" # -
+             VERSION "${PROJECT_VERSION}" # -
+             SOVERSION "${PROJECT_VERSION_MAJOR}")
 
 set(AETHERX6100CTR_EXPORT_HEADER_FILE "include/aether_x6100/control/api.h")
 
