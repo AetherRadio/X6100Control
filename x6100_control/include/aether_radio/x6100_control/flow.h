@@ -45,5 +45,5 @@ typedef struct __attribute__((__packed__))
 
 /* Functions */
 
-AETHERX6100CTR_API bool x6100_flow_init();
-AETHERX6100CTR_API x6100_flow_t *x6100_flow_read();
+AETHER_X6100_CONTROL_API bool x6100_flow_init();
+AETHER_X6100_CONTROL_API x6100_flow_t *x6100_flow_read();

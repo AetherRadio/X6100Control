@@ -18,5 +18,5 @@ extern int x6100_pin_wifi;
 extern int x6100_pin_rf;
 extern int x6100_pin_light;
 
-AETHERX6100CTR_API bool x6100_gpio_init();
-AETHERX6100CTR_API void x6100_gpio_set(int pin, int value);
+AETHER_X6100_CONTROL_API bool x6100_gpio_init();
+AETHER_X6100_CONTROL_API void x6100_gpio_set(int pin, int value);
