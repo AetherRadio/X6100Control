@@ -7,7 +7,7 @@ Now part of the [Aether X6100 project](https://github.com/ruilvo/AetherX6100).
 
 ## Credits
 
-The original project belongs to [Oleg Belousov](https://github.com/strijar).
+The original project belongs to [Oleg Belousov](https://github.com/strijar/x6100_control).
 
 Most of the information present reverse was obtained from reverse-engineering
 the Xiegu X6100's front end app, called `x6100_ui_v100`. Credits go to Jet Yee,
