@@ -31,3 +31,8 @@ target_sources(aetherx6100ctrl
 
 add_subdirectory(include)
 add_subdirectory(src)
+
+# Installation code
+add_library(aetherx6100ctrl::aetherx6100ctrl ALIAS aetherx6100ctrl)
+
+write_basic_package_version_file(aetherx6100ctrlConfigVersion.cmake COMPATIBILITY SameMajorVersion)
