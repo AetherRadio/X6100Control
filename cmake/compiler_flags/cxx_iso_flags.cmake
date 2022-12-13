@@ -1,6 +1,6 @@
 include_guard(GLOBAL)
 
-if(NOT AETHERX6100CTRL_USE_ISO_FLAGS)
+if(NOT AETHER_X6100CTRL_USE_ISO_FLAGS)
   return()
 endif()
 

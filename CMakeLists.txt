@@ -9,13 +9,13 @@ project(
 
 option(BUILD_SHARED_LIBS "Build libraries as shared libraries." ON) # CMake option name
 
-option(AETHERX6100CTRL_DEVELOPER_MODE "Enable developer helpers." OFF)
+option(AETHER_X6100CTRL_DEVELOPER_MODE "Enable developer helpers." OFF)
 
-option(AETHERX6100CTRL_USE_LTO "Enable link-time optimization when possible." ON)
-option(AETHERX6100CTRL_USE_FAST_MATH "Use fast math when possible (-ffast-math or /fp:fast)." OFF)
+option(AETHER_X6100CTRL_USE_LTO "Enable link-time optimization when possible." ON)
+option(AETHER_X6100CTRL_USE_FAST_MATH "Use fast math when possible (-ffast-math or /fp:fast)." OFF)
 
-option(AETHERX6100CTRL_SET_CXX_STANDARD "Set the C++ standard directly." ON)
-option(AETHERX6100CTRL_USE_CXX_ISO_FLAGS
+option(AETHER_X6100CTRL_SET_CXX_STANDARD "Set the C++ standard directly." ON)
+option(AETHER_X6100CTRL_USE_CXX_ISO_FLAGS
        "Add extra compiler flags to make C++ compilers more compliant." ON)
 
 # --------------------------------------------------------------------------------------------------

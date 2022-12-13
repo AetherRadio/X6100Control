@@ -1,6 +1,6 @@
 include_guard(GLOBAL)
 
-if(NOT AETHERX6100CTRL_USE_LTO)
+if(NOT AETHER_X6100CTRL_USE_LTO)
   return()
 endif()
 
