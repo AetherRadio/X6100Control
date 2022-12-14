@@ -12,7 +12,7 @@ set_target_properties(
              VERSION "${PROJECT_VERSION}" #
              SOVERSION "${PROJECT_VERSION_MAJOR}")
 
-set(AETHER_X6100_CONTROL_EXPORT_HEADER_FILE "include/aether_radio/x6100_control/api.h")
+set(AETHER_X6100_CONTROL_EXPORT_HEADER_FILE "${AETHER_INCLUDE_DIR}/x6100_control/api.h")
 
 generate_export_header(
   aether_x6100_control
@@ -40,5 +40,5 @@ target_include_directories(aether_x6100_control #
 
 install(TARGETS aether_x6100_control)
 
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/aether_radio
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${AETHER_INCLUDE_DIR}
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
