@@ -20,6 +20,8 @@ option(AETHER_X6100CTRL_USE_CXX_ISO_FLAGS
 
 # --------------------------------------------------------------------------------------------------
 
+set(AETHER_VENDOR_NAME "AetherRadio")
+
 include(GenerateExportHeader)
 include(CheckCXXCompilerFlag)
 include(CheckIPOSupported)
