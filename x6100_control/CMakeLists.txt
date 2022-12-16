@@ -23,11 +23,13 @@ generate_export_header(
   EXPORT_FILE_NAME
   ${AETHER_X6100_CONTROL_EXPORT_HEADER_FILE})
 
-target_include_directories(aether_x6100_control #
-                           PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>)
+target_sources(aether_x6100_control PUBLIC FILE_SET HEADERS BASE_DIRS
+                                           ${CMAKE_CURRENT_BINARY_DIR}/include)
 
-target_sources(aether_x6100_control #
-               PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/${AETHER_X6100_CONTROL_EXPORT_HEADER_FILE})
+target_sources(
+  aether_x6100_control #
+  PUBLIC FILE_SET HEADERS FILES
+         ${CMAKE_CURRENT_BINARY_DIR}/${AETHER_X6100_CONTROL_EXPORT_HEADER_FILE})
 
 add_subdirectory(include)
 add_subdirectory(src)
