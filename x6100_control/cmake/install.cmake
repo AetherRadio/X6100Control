@@ -5,4 +5,4 @@ target_include_directories(aether_x6100_control #
 
 install(TARGETS aether_x6100_control)
 
-install(TARGETS aether_x6100_control FILE_SET aether_x6100_control_headers)
+install(TARGETS aether_x6100_control FILE_SET HEADERS)
