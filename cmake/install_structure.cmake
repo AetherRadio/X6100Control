@@ -1,3 +1,6 @@
 include_guard(GLOBAL)
 
-set(AETHER_X6100CTRL_INSTALL_PLUGINDIR ${CMAKE_INSTALL_BINDIR}/plugins)
+include(GNUInstallDirs)
+
+# Professional CMake 27.1.1
+set(CMAKE_INSTALL_DOCDIR ${CMAKE_INSTALL_DATAROOTDIR}/doc/${PROJECT_NAME})
