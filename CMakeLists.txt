@@ -20,17 +20,13 @@ option(AETHER_X6100CTRL_USE_CXX_ISO_FLAGS
 
 # --------------------------------------------------------------------------------------------------
 
+# Global variables
 set(AETHER_VENDOR_NAME "AetherRadio")
 set(AETHER_INCLUDE_DIR "include/aether_radio")
 
+# Global modules
 include(GenerateExportHeader)
 include(CheckCXXCompilerFlag)
-include(CheckIPOSupported)
-include(GNUInstallDirs)
-include(CMakePackageConfigHelpers)
-
-# Professional CMake 27.1.1
-set(CMAKE_INSTALL_DOCDIR ${CMAKE_INSTALL_DATAROOTDIR}/doc/${PROJECT_NAME})
 
 # Local modules
 include(cmake/output_structure.cmake)
@@ -46,8 +42,48 @@ include(cmake/dependencies/openmp.cmake)
 
 include(cmake/developer_mode.cmake)
 
-# Projects
-add_subdirectory(x6100_control)
+# Sanity checks
+if(UNIX AND NOT APPLE)
+  set(LINUX TRUE)
+else()
+  message(FATAL_ERROR "${PROJECT_NAME} is not compatible with non-Linux systems.")
+endif()
 
-# Packaging
+# Aether X6100 Control library
+add_library(aether_x6100_control)
+set_target_properties(
+  aether_x6100_control
+  PROPERTIES EXPORT_NAME "aether_x6100_control" #
+             OUTPUT_NAME "aether_x6100_control" #
+             DEFINE_SYMBOL "AETHER_X6100_CONTROL_EXPORTING" #
+             VERSION "${PROJECT_VERSION}" #
+             SOVERSION "${PROJECT_VERSION_MAJOR}")
+
+# Export header
+set(AETHER_X6100_CONTROL_EXPORT_HEADER_FILE "${AETHER_INCLUDE_DIR}/x6100_control/api.h")
+generate_export_header(
+  aether_x6100_control
+  BASE_NAME
+  "AETHER_X6100_CONTROL"
+  EXPORT_MACRO_NAME
+  "AETHER_X6100_CONTROL_API"
+  EXPORT_FILE_NAME
+  ${AETHER_X6100_CONTROL_EXPORT_HEADER_FILE})
+target_sources(
+  aether_x6100_control
+  PUBLIC #
+         FILE_SET HEADERS #
+         BASE_DIRS ${CMAKE_CURRENT_BINARY_DIR}/include)
+target_sources(
+  aether_x6100_control #
+  PUBLIC #
+         FILE_SET HEADERS #
+         FILES ${CMAKE_CURRENT_BINARY_DIR}/${AETHER_X6100_CONTROL_EXPORT_HEADER_FILE})
+
+# Code for the library
+add_subdirectory(include)
+add_subdirectory(src)
+
+# Install and packaging code
+include(cmake/installation.cmake)
 include(cmake/packaging.cmake)
