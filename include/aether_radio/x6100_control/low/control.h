@@ -70,13 +70,13 @@ typedef enum
 
 /* Regs x6100_vfoa... x6100_vfob... */
 
-enum
+typedef enum
 {
     x6100_agc_off = 0,
     x6100_agc_slow = 1,
     x6100_agc_fast = 2,
     x6100_agc_auto = 3
-};
+} x6100_agc_t;
 
 enum
 {
@@ -84,7 +84,7 @@ enum
     x6100_att_on = 1
 };
 
-enum
+typedef enum
 {
     x6100_mode_lsb = 0,
     x6100_mode_lsb_dig = 1,
@@ -94,7 +94,7 @@ enum
     x6100_mode_cwr = 5,
     x6100_mode_am = 6,
     x6100_mode_nfm = 7
-};
+} x6100_mode_t;
 
 enum
 {
