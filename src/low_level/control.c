@@ -79,7 +79,7 @@ bool x6100_control_init()
     return send_regs(&all_cmd, sizeof(all_cmd));
 }
 
-bool x6100_control_cmd(x6100_cmd_enum_t cmd, uint32_t arg)
+bool x6100_control_cmd(aether_x6100ctr_cmds_t cmd, uint32_t arg)
 {
     cmd_struct_t command;
     uint16_t addr = cmd * 4;
