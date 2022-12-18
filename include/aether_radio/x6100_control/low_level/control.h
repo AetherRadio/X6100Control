@@ -87,22 +87,30 @@ typedef enum
     aether_x6100ctrl_agc_auto = 3
 } aether_x6100ctr_agc_mode_t;
 
+/**
+ * @brief Xiegu X6100 ATT Modes
+ *
+ */
 typedef enum
 {
     aether_x6100ctrl_att_off = 0,
     aether_x6100ctrl_att_on = 1
 } aether_x6100ctr_att_mode_t;
 
+/**
+ * @brief Xiegu X6100 modems
+ *
+ */
 typedef enum
 {
-    aether_x6100ctrl_mode_lsb = 0,
-    aether_x6100ctrl_mode_lsb_dig = 1,
-    aether_x6100ctrl_mode_usb = 2,
-    aether_x6100ctrl_mode_usb_dig = 3,
-    aether_x6100ctrl_mode_cw = 4,
-    aether_x6100ctrl_mode_cwr = 5,
-    aether_x6100ctrl_mode_am = 6,
-    aether_x6100ctrl_mode_nfm = 7
+    aether_x6100ctrl_mode_lsb = 0, /*!< LSB. */
+    aether_x6100ctrl_mode_lsb_dig = 1, /*!< LSB-D (changes audio input to USB codec (?)). */
+    aether_x6100ctrl_mode_usb = 2, /*!< USB. */
+    aether_x6100ctrl_mode_usb_dig = 3, /*!< USB-D (changes audio input to USB codec (?)). */
+    aether_x6100ctrl_mode_cw = 4, /*!< CW. Keying CW is done in a "special way". */
+    aether_x6100ctrl_mode_cwr = 5, /*!< CW-R. Different keying settings vs CW (?) */
+    aether_x6100ctrl_mode_am = 6, /*!< AM. */
+    aether_x6100ctrl_mode_nfm = 7 /*!< NFM. */
 } aether_x6100ctr_modem_t;
 
 typedef enum
