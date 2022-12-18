@@ -7,7 +7,7 @@
  *  Copyright (c) 2022 Rui Oliveira aka CT7ALW
  */
 
-#include "aether_radio/x6100_control/control.h"
+#include "aether_radio/x6100_control/low/control.h"
 
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
