@@ -21,8 +21,8 @@ option(AETHER_X6100CTRL_USE_CXX_ISO_FLAGS
 # --------------------------------------------------------------------------------------------------
 
 # Global variables
-set(AETHER_VENDOR_NAME "AetherRadio")
-set(AETHER_INCLUDE_DIR "include/aether_radio")
+set(AETHER_X6100CTRL_VENDOR_NAME "AetherRadio")
+set(AETHER_X6100CTRL_INCLUDE_DIR "include/aether_radio")
 
 # Global modules
 include(GenerateExportHeader)
@@ -44,7 +44,7 @@ include(cmake/developer_mode.cmake)
 
 # Sanity checks
 if(UNIX AND NOT APPLE)
-  set(LINUX TRUE)
+  set(AETHER_X6100CTRL_LINUX TRUE)
 else()
   message(FATAL_ERROR "${PROJECT_NAME} is not compatible with non-Linux systems.")
 endif()
@@ -55,20 +55,20 @@ set_target_properties(
   aether_x6100_control
   PROPERTIES EXPORT_NAME "aether_x6100_control" #
              OUTPUT_NAME "aether_x6100_control" #
-             DEFINE_SYMBOL "AETHER_X6100_CONTROL_EXPORTING" #
+             DEFINE_SYMBOL "AETHER_X6100CTRL_EXPORTING" #
              VERSION "${PROJECT_VERSION}" #
              SOVERSION "${PROJECT_VERSION_MAJOR}")
 
 # Export header
-set(AETHER_X6100_CONTROL_EXPORT_HEADER_FILE "${AETHER_INCLUDE_DIR}/x6100_control/api.h")
+set(AETHER_X6100CTRL_EXPORT_HEADER_FILE "${AETHER_X6100CTRL_INCLUDE_DIR}/x6100_control/api.h")
 generate_export_header(
   aether_x6100_control
   BASE_NAME
-  "AETHER_X6100_CONTROL"
+  "AETHER_X6100CTRL"
   EXPORT_MACRO_NAME
-  "AETHER_X6100_CONTROL_API"
+  "AETHER_X6100CTRL_API"
   EXPORT_FILE_NAME
-  ${AETHER_X6100_CONTROL_EXPORT_HEADER_FILE})
+  ${AETHER_X6100CTRL_EXPORT_HEADER_FILE})
 target_sources(
   aether_x6100_control
   PUBLIC #
@@ -78,7 +78,7 @@ target_sources(
   aether_x6100_control #
   PUBLIC #
          FILE_SET HEADERS #
-         FILES ${CMAKE_CURRENT_BINARY_DIR}/${AETHER_X6100_CONTROL_EXPORT_HEADER_FILE})
+         FILES ${CMAKE_CURRENT_BINARY_DIR}/${AETHER_X6100CTRL_EXPORT_HEADER_FILE})
 
 # Code for the library
 add_subdirectory(include)
