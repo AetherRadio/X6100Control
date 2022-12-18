@@ -15,7 +15,7 @@
 #include <stdint.h>
 
 /**
- * @brief Xiegu X6100 Control Commands
+ * @brief Xiegu X6100's control Commands
  *
  * This enum contains all the commands that can be sent to the Xiegu X6100 that have been discovered
  * so far.
@@ -75,21 +75,25 @@ typedef enum
     aether_x6100ctrl_last = 55
 } aether_x6100ctr_cmds_t;
 
-enum
+/**
+ * @brief Xiegu X6100 AGC Modes
+ *
+ */
+typedef enum
 {
     aether_x6100ctrl_agc_off = 0,
     aether_x6100ctrl_agc_slow = 1,
     aether_x6100ctrl_agc_fast = 2,
     aether_x6100ctrl_agc_auto = 3
-};
+} aether_x6100ctr_agc_mode_t;
 
-enum
+typedef enum
 {
     aether_x6100ctrl_att_off = 0,
     aether_x6100ctrl_att_on = 1
-};
+} aether_x6100ctr_att_mode_t;
 
-enum
+typedef enum
 {
     aether_x6100ctrl_mode_lsb = 0,
     aether_x6100ctrl_mode_lsb_dig = 1,
@@ -99,13 +103,13 @@ enum
     aether_x6100ctrl_mode_cwr = 5,
     aether_x6100ctrl_mode_am = 6,
     aether_x6100ctrl_mode_nfm = 7
-};
+} aether_x6100ctr_modem_t;
 
-enum
+typedef enum
 {
     aether_x6100ctrl_pre_off = 0,
     aether_x6100ctrl_pre_on = 1
-};
+} aether_x6100ctr_pre_mode_t;
 
 enum
 {
