@@ -119,7 +119,7 @@ enum
 
 /* Functions */
 
-AETHER_X6100_CONTROL_API bool x6100_control_init();
-AETHER_X6100_CONTROL_API bool x6100_control_cmd(x6100_cmd_enum_t cmd, uint32_t arg);
-AETHER_X6100_CONTROL_API void x6100_control_idle();
-AETHER_X6100_CONTROL_API void x6100_control_set_band(uint32_t freq);
+AETHER_X6100CTRL_API bool x6100_control_init();
+AETHER_X6100CTRL_API bool x6100_control_cmd(x6100_cmd_enum_t cmd, uint32_t arg);
+AETHER_X6100CTRL_API void x6100_control_idle();
+AETHER_X6100CTRL_API void x6100_control_set_band(uint32_t freq);
