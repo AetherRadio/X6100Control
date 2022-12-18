@@ -1,1 +1,1 @@
-target_sources(aether_x6100_control PRIVATE control.c flow.c gpio.c)
+add_subdirectory(low_level)
