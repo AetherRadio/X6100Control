@@ -18,7 +18,7 @@ extern “C”
 
 #include "aether_radio/x6100_control/macros.h"
 
-#include <complex.h>
+#include <complex.h> // TODO(ruilvo): Change <complex.h> with std::complex on C++.
 
 #include <stdbool.h>
 #include <stdint.h>
