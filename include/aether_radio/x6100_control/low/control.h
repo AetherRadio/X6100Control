@@ -111,7 +111,7 @@ enum
     x6100_swrscan_trx = 0x00010,
     x6100_atue = 0x01000,
     x6100_atu_tune = 0x02000,
-    x6100_trx = 0x04000,
+    x6100_modem_trx = 0x04000,
     x6100_calibration_trx = 0x08000,
     x6100_power_off = 0x10000,
     x6100_iptt = 0x40000

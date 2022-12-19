@@ -27,11 +27,16 @@ AETHER_X6100CTRL_API void x6100_control_vfo_pre_set(x6100_vfo_t vfo, x6100_pre_t
 
 /* Sound settings */
 
-AETHER_X6100CTRL_API void x6100_control_rxvol_set(uint8_t vol);
-AETHER_X6100CTRL_API void x6100_control_record_set(bool on);
+AETHER_X6100CTRL_API void x6100_control_rxvol_set(uint8_t vol);     /* Speaker volume */
+AETHER_X6100CTRL_API void x6100_control_record_set(bool on);        /* Toggle audio stream mic/speaker or RX/TX audio */
 
 /* Operation */
 
-AETHER_X6100CTRL_API void x6100_control_ptt_set(bool on);
-AETHER_X6100CTRL_API void x6100_control_atu_tune(bool on);
-AETHER_X6100CTRL_API void x6100_control_poweroff();
+AETHER_X6100CTRL_API void x6100_control_ptt_set(bool on);           /* Toggle PTT signal */
+AETHER_X6100CTRL_API void x6100_control_atu_tune(bool on);          /* Toggle ATU tuning process */
+AETHER_X6100CTRL_API void x6100_control_poweroff();                 /* Poweroff the device */
+AETHER_X6100CTRL_API void x6100_control_split_set(bool on);         /* Toggle split */
+AETHER_X6100CTRL_API void x6100_control_atu_set(bool on);           /* Toggle using ATU */
+AETHER_X6100CTRL_API void x6100_control_modem_set(bool on);         /* Toggle serial port for SMT32 firmware update */
+AETHER_X6100CTRL_API void x6100_control_swrscan_set(bool on);       /* Toggle SWR scan process */
+AETHER_X6100CTRL_API void x6100_control_calibration_set(bool on);   /* Toggle calibration process after update STM32 firmware */

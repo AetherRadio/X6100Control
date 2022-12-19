@@ -106,3 +106,72 @@ void x6100_control_poweroff()
     kill(1, SIGUSR2);   
 }
 
+void x6100_control_split_set(bool on)
+{
+    uint32_t prev = x6100_control_get(x6100_sple_atue_trx);
+    uint32_t next;
+    
+    if (on) {
+        next = prev | x6100_sple;
+    } else {
+        next = prev & (~x6100_sple);
+    }
+    
+    x6100_control_cmd(x6100_sple_atue_trx, next);
+}
+
+void x6100_control_atu_set(bool on)
+{
+    uint32_t prev = x6100_control_get(x6100_sple_atue_trx);
+    uint32_t next;
+    
+    if (on) {
+        next = prev | x6100_atue;
+    } else {
+        next = prev & (~x6100_atue);
+    }
+    
+    x6100_control_cmd(x6100_sple_atue_trx, next);
+}
+
+void x6100_control_modem_set(bool on)
+{
+    uint32_t prev = x6100_control_get(x6100_sple_atue_trx);
+    uint32_t next;
+    
+    if (on) {
+        next = prev | x6100_modem_trx;
+    } else {
+        next = prev & (~x6100_modem_trx);
+    }
+    
+    x6100_control_cmd(x6100_sple_atue_trx, next);
+}
+
+void x6100_control_swrscan_set(bool on)
+{
+    uint32_t prev = x6100_control_get(x6100_sple_atue_trx);
+    uint32_t next;
+    
+    if (on) {
+        next = prev | x6100_swrscan_trx;
+    } else {
+        next = prev & (~x6100_swrscan_trx);
+    }
+    
+    x6100_control_cmd(x6100_sple_atue_trx, next);
+}
+
+void x6100_control_calibration_set(bool on)
+{
+    uint32_t prev = x6100_control_get(x6100_sple_atue_trx);
+    uint32_t next;
+    
+    if (on) {
+        next = prev | x6100_calibration_trx;
+    } else {
+        next = prev & (~x6100_calibration_trx);
+    }
+    
+    x6100_control_cmd(x6100_sple_atue_trx, next);
+}
