@@ -22,6 +22,8 @@ typedef enum {
 AETHER_X6100CTRL_API void x6100_control_vfo_mode_set(x6100_vfo_t vfo, x6100_mode_t mode);
 AETHER_X6100CTRL_API void x6100_control_vfo_agc_set(x6100_vfo_t vfo, x6100_agc_t agc);
 AETHER_X6100CTRL_API void x6100_control_vfo_freq_set(x6100_vfo_t vfo, uint32_t freq);
+AETHER_X6100CTRL_API void x6100_control_vfo_att_set(x6100_vfo_t vfo, x6100_att_t att);
+AETHER_X6100CTRL_API void x6100_control_vfo_pre_set(x6100_vfo_t vfo, x6100_pre_t pre);
 
 /* Sound settings */
 

@@ -78,11 +78,11 @@ typedef enum
     x6100_agc_auto = 3
 } x6100_agc_t;
 
-enum
+typedef enum
 {
     x6100_att_off = 0,
     x6100_att_on = 1
-};
+} x6100_att_t;
 
 typedef enum
 {
@@ -96,11 +96,11 @@ typedef enum
     x6100_mode_nfm = 7
 } x6100_mode_t;
 
-enum
+typedef enum
 {
     x6100_pre_off = 0,
     x6100_pre_on = 1
-};
+} x6100_pre_t;
 
 /* Reg x6100_sple_atue_trx */
 

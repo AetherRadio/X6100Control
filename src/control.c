@@ -32,6 +32,16 @@ void x6100_control_vfo_agc_set(x6100_vfo_t vfo, x6100_agc_t agc)
     x6100_control_cmd(vfo == X6100_VFO_A ? x6100_vfoa_agc : x6100_vfob_agc, agc);
 }
 
+void x6100_control_vfo_att_set(x6100_vfo_t vfo, x6100_att_t att)
+{
+    x6100_control_cmd(vfo == X6100_VFO_A ? x6100_vfoa_att : x6100_vfob_att, att);
+}
+
+void x6100_control_vfo_pre_set(x6100_vfo_t vfo, x6100_pre_t pre)
+{
+    x6100_control_cmd(vfo == X6100_VFO_A ? x6100_vfoa_pre : x6100_vfob_pre, pre);
+}
+
 /* Sound settings */
 
 void x6100_control_rxvol_set(uint8_t vol)
