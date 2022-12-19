@@ -9,19 +9,18 @@
 
 #pragma once
 
+#include "aether_radio/x6100_control/cpp_compat.h"
+#include "aether_radio/x6100_control/macros.h"
+
+#include <stdbool.h>
+#include <stdint.h>
+
 #define AETHER_X6100CTRL_BB_IQ_SAMPLES_COUNT 512
 
 #ifdef __cplusplus
 extern “C”
 {
 #endif
-
-#include "aether_radio/x6100_control/macros.h"
-
-#include <complex.h> // TODO(ruilvo): Change <complex.h> with std::complex on C++.
-
-#include <stdbool.h>
-#include <stdint.h>
 
     typedef struct
     {
@@ -35,7 +34,7 @@ extern “C”
     typedef struct AETHER_X6100CTRL_PACKED
     {
         uint32_t magic;
-        complex float bb_iq_samples[AETHER_X6100CTRL_BB_IQ_SAMPLES_COUNT];
+        AETHER_X6100CTLR_FCOMPLEX bb_iq_samples[AETHER_X6100CTRL_BB_IQ_SAMPLES_COUNT];
 
         aether_x6100ctrl_bb_stream_flags_t flags;
         uint8_t reserved_1;
