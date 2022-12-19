@@ -9,6 +9,8 @@
 
 #include "aether_radio/x6100_control/low_level/control.h"
 
+#include "aether_radio/x6100_control/macros.h"
+
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
 #include <linux/i2c.h>
@@ -68,10 +70,10 @@ bool x6100_control_init()
     all_cmd.arg[x6100_rfg_txpwr] = (10 << 8) | 64;
 
     all_cmd.arg[x6100_mode] = 500;
-    all_cmd.arg[x6100_filter1_low] = (uint32_t) 50.0f;
-    all_cmd.arg[x6100_filter1_high] = (uint32_t) 2950.0;
-    all_cmd.arg[x6100_filter2_low] = (uint32_t) 50.0f;
-    all_cmd.arg[x6100_filter2_high] = (uint32_t) 2950.0f;
+    all_cmd.arg[x6100_filter1_low] = (uint32_t)50.0f;
+    all_cmd.arg[x6100_filter1_high] = (uint32_t)2950.0;
+    all_cmd.arg[x6100_filter2_low] = (uint32_t)50.0f;
+    all_cmd.arg[x6100_filter2_high] = (uint32_t)2950.0f;
 
     all_cmd.arg[x6100_pwrsync] = 2000000;
     all_cmd.arg[x6100_last] = 0x100001;
@@ -107,46 +109,86 @@ void x6100_control_idle()
 
 static uint8_t band_index(int freq)
 {
-    if (freq < 1800000) {
+    if (freq < 1800000)
+    {
         return 0;
-    } else if (freq <= 2000000) {
+    }
+    else if (freq <= 2000000)
+    {
         return 1;
-    } else if (freq < 3500000) {
+    }
+    else if (freq < 3500000)
+    {
         return 2;
-    } else if (freq <= 4000000) {
+    }
+    else if (freq <= 4000000)
+    {
         return 3;
-    } else if (freq < 5330500) {
+    }
+    else if (freq < 5330500)
+    {
         return 4;
-    } else if (freq <= 5405000) {
+    }
+    else if (freq <= 5405000)
+    {
         return 5;
-    } else if (freq < 7000000) {
+    }
+    else if (freq < 7000000)
+    {
         return 6;
-    } else if (freq <= 7300000) {
+    }
+    else if (freq <= 7300000)
+    {
         return 7;
-    } else if (freq < 10100000) {
+    }
+    else if (freq < 10100000)
+    {
         return 8;
-    } else if (freq <= 10150000) {
+    }
+    else if (freq <= 10150000)
+    {
         return 9;
-    } else if (freq < 14000000) {
+    }
+    else if (freq < 14000000)
+    {
         return 10;
-    } else if (freq <= 14350000) {
+    }
+    else if (freq <= 14350000)
+    {
         return 11;
-    } else if (freq < 18068000) {
+    }
+    else if (freq < 18068000)
+    {
         return 12;
-    } else if (freq <= 18168000) {
+    }
+    else if (freq <= 18168000)
+    {
         return 13;
-    } else if (freq < 21000000) {
+    }
+    else if (freq < 21000000)
+    {
         return 14;
-    } else if (21450000 < freq) {
-        if (freq < 24890000) {
+    }
+    else if (21450000 < freq)
+    {
+        if (freq < 24890000)
+        {
             return 16;
-        } else if (freq <= 24990000) {
+        }
+        else if (freq <= 24990000)
+        {
             return 17;
-        } else if (freq < 28000000) {
+        }
+        else if (freq < 28000000)
+        {
             return 18;
-        } else if (freq > 29700000) {
-            if (freq > 50000000) {
-                if (freq > 54000000) {
+        }
+        else if (freq > 29700000)
+        {
+            if (freq > 50000000)
+            {
+                if (freq > 54000000)
+                {
                     return 22;
                 }
                 return 21;
@@ -156,7 +198,7 @@ static uint8_t band_index(int freq)
         return 19;
     }
 
-  return 15;
+    return 15;
 }
 
 void x6100_control_set_band(uint32_t freq)
@@ -168,5 +210,5 @@ void x6100_control_set_band(uint32_t freq)
         cur_band = band;
 
         x6100_control_cmd(x6100_vi_vm, cur_band << 8);
-   }
+    }
 }
