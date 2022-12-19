@@ -124,7 +124,7 @@ extern “C”
     } aether_x6100ctr_pre_mode_t;
 
     /**
-     * @brief TODO(ruilvo): Discover what this is.
+     * @brief Xiegu X6100 common command arguments
      *
      */
     enum
@@ -133,10 +133,13 @@ extern “C”
         aether_x6100ctrl_voice_rec = 0x00008,
         aether_x6100ctrl_swrscan_trx = 0x00010,
         aether_x6100ctrl_atue = 0x01000,
+        /** Trigger ATU tune. Will make `aether_x6100ctrl_bb_stream_t.flags.tx` be 1 for the
+         * duration of the tunning process. */
         aether_x6100ctrl_atu_tune = 0x02000,
         aether_x6100ctrl_trx = 0x04000,
         aether_x6100ctrl_calibration_trx = 0x08000,
         aether_x6100ctrl_power_off = 0x10000,
+        /** PTT control. TODO(ruilvo): discover what the `i` means. */
         aether_x6100ctrl_iptt = 0x40000
     };
 
