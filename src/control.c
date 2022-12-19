@@ -7,6 +7,8 @@
  *  Copyright (c) 2022 Rui Oliveira aka CT7ALW
  */
 
+#include <unistd.h>
+#include <signal.h>
 #include "aether_radio/x6100_control/control.h"
 
 /* VFO Settings */
@@ -48,3 +50,59 @@ void x6100_control_rxvol_set(uint8_t vol)
 {
     x6100_control_cmd(x6100_rxvol, vol);
 }
+
+void x6100_control_record_set(bool on)
+{
+    uint32_t prev = x6100_control_get(x6100_sple_atue_trx);
+    uint32_t next;
+    
+    if (on) {
+        next = prev | x6100_voice_rec;
+    } else {
+        next = prev & (~x6100_voice_rec);
+    }
+    
+    x6100_control_cmd(x6100_sple_atue_trx, next);
+}
+
+/* Operation */
+
+void x6100_control_ptt_set(bool on) {
+    uint32_t prev = x6100_control_get(x6100_sple_atue_trx);
+    uint32_t next;
+    
+    if (on) {
+        next = prev | x6100_iptt;
+    } else {
+        next = prev & (~x6100_iptt);
+    }
+    
+    x6100_control_cmd(x6100_sple_atue_trx, next);
+}
+
+void x6100_control_atu_tune(bool on) 
+{
+    uint32_t prev = x6100_control_get(x6100_sple_atue_trx);
+    uint32_t next;
+    
+    if (on) {
+        next = prev | x6100_atu_tune;
+    } else {
+        next = prev & (~x6100_atu_tune);
+    }
+    
+    x6100_control_cmd(x6100_sple_atue_trx, next);
+}
+
+void x6100_control_poweroff() 
+{
+    uint32_t prev = x6100_control_get(x6100_sple_atue_trx);
+    uint32_t next = prev & x6100_power_off;
+    
+    x6100_control_cmd(x6100_sple_atue_trx, next);
+    sleep(1);
+    
+    /* Send poweroff to init process */
+    kill(1, SIGUSR2);   
+}
+

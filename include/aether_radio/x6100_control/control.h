@@ -28,3 +28,10 @@ AETHER_X6100CTRL_API void x6100_control_vfo_pre_set(x6100_vfo_t vfo, x6100_pre_t
 /* Sound settings */
 
 AETHER_X6100CTRL_API void x6100_control_rxvol_set(uint8_t vol);
+AETHER_X6100CTRL_API void x6100_control_record_set(bool on);
+
+/* Operation */
+
+AETHER_X6100CTRL_API void x6100_control_ptt_set(bool on);
+AETHER_X6100CTRL_API void x6100_control_atu_tune(bool on);
+AETHER_X6100CTRL_API void x6100_control_poweroff();

@@ -98,6 +98,11 @@ bool x6100_control_cmd(x6100_cmd_enum_t cmd, uint32_t arg)
     return false;
 }
 
+uint32_t x6100_control_get(x6100_cmd_enum_t cmd)
+{
+    return all_cmd.arg[cmd];
+}
+
 void x6100_control_idle()
 {
     send_regs(&all_cmd, sizeof(all_cmd));
