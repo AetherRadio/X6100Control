@@ -16,13 +16,13 @@
 #include <string.h>
 #include <sys/ioctl.h>
 
-typedef struct __attribute__((__packed__))
+typedef struct AETHER_X6100CTRL_PACKED
 {
     uint16_t addr;
     uint32_t arg;
 } cmd_struct_t;
 
-typedef struct __attribute__((__packed__))
+typedef struct AETHER_X6100CTRL_PACKED
 {
     uint16_t addr;
     uint32_t arg[x6100_last + 1];
