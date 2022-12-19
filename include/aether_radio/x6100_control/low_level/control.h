@@ -9,33 +9,31 @@
 
 #pragma once
 
-#include "aether_radio/x6100_control/api.h"
+#ifdef __cplusplus
+extern “C” {
+#endif
 
-#include <stdbool.h>
-#include <stdint.h>
-
-/**
- * @brief Xiegu X6100's control Commands
- *
- * This enum contains all the commands that can be sent to the Xiegu X6100 that have been discovered
- * so far.
- *
- */
-typedef enum
-{
+  /**
+   * @brief Xiegu X6100's control Commands
+   *
+   * This enum contains all the commands that can be sent to the Xiegu X6100
+   * that have been discovered so far.
+   *
+   */
+  typedef enum {
     aether_x6100ctrl_vfoa_ham_band = 0, /*!< VFO-A band. */
-    aether_x6100ctrl_vfoa_freq, /*!< VFO-A frequency (integer Hz). */
-    aether_x6100ctrl_vfoa_att, /*!< VFO-A ATT (attenuator). */
-    aether_x6100ctrl_vfoa_pre, /*!< VFO-A pre-amp. */
-    aether_x6100ctrl_vfoa_mode, /*!< VFO-A mode (modem). */
-    aether_x6100ctrl_vfoa_agc, /*!< VFO-A AGC mode. */
+    aether_x6100ctrl_vfoa_freq,         /*!< VFO-A frequency (integer Hz). */
+    aether_x6100ctrl_vfoa_att,          /*!< VFO-A ATT (attenuator). */
+    aether_x6100ctrl_vfoa_pre,          /*!< VFO-A pre-amp. */
+    aether_x6100ctrl_vfoa_mode,         /*!< VFO-A mode (modem). */
+    aether_x6100ctrl_vfoa_agc,          /*!< VFO-A AGC mode. */
 
     aether_x6100ctrl_vfob_ham_band = 6, /*!< VFO-B band. */
-    aether_x6100ctrl_vfob_freq, /*!< VFO-B frequency (integer Hz). */
-    aether_x6100ctrl_vfob_att, /*!< VFO-B ATT (attenuator). */
-    aether_x6100ctrl_vfob_pre, /*!< VFO-B pre-amp. */
-    aether_x6100ctrl_vfob_mode, /*!< VFO-B mode (modem). */
-    aether_x6100ctrl_vfob_agc, /*!< VFO-B AGC mode. */
+    aether_x6100ctrl_vfob_freq,         /*!< VFO-B frequency (integer Hz). */
+    aether_x6100ctrl_vfob_att,          /*!< VFO-B ATT (attenuator). */
+    aether_x6100ctrl_vfob_pre,          /*!< VFO-B pre-amp. */
+    aether_x6100ctrl_vfob_mode,         /*!< VFO-B mode (modem). */
+    aether_x6100ctrl_vfob_agc,          /*!< VFO-B AGC mode. */
 
     aether_x6100ctrl_sple_atue_trx = 12,
     aether_x6100ctrl_vi_vm,
@@ -73,54 +71,53 @@ typedef enum
 
     aether_x6100ctrl_pwrsync = 53,
     aether_x6100ctrl_last = 55
-} aether_x6100ctr_cmds_t;
+  } aether_x6100ctr_cmds_t;
 
-/**
- * @brief Xiegu X6100 AGC Modes
- *
- */
-typedef enum
-{
+  /**
+   * @brief Xiegu X6100 AGC Modes
+   *
+   */
+  typedef enum {
     aether_x6100ctrl_agc_off = 0,
     aether_x6100ctrl_agc_slow = 1,
     aether_x6100ctrl_agc_fast = 2,
     aether_x6100ctrl_agc_auto = 3
-} aether_x6100ctr_agc_mode_t;
+  } aether_x6100ctr_agc_mode_t;
 
-/**
- * @brief Xiegu X6100 ATT Modes
- *
- */
-typedef enum
-{
+  /**
+   * @brief Xiegu X6100 ATT Modes
+   *
+   */
+  typedef enum {
     aether_x6100ctrl_att_off = 0,
     aether_x6100ctrl_att_on = 1
-} aether_x6100ctr_att_mode_t;
+  } aether_x6100ctr_att_mode_t;
 
-/**
- * @brief Xiegu X6100 modems
- *
- */
-typedef enum
-{
+  /**
+   * @brief Xiegu X6100 modems
+   *
+   */
+  typedef enum {
     aether_x6100ctrl_mode_lsb = 0, /*!< LSB. */
-    aether_x6100ctrl_mode_lsb_dig = 1, /*!< LSB-D (changes audio input to USB codec (?)). */
+    aether_x6100ctrl_mode_lsb_dig =
+        1, /*!< LSB-D (changes audio input to USB codec (?)). */
     aether_x6100ctrl_mode_usb = 2, /*!< USB. */
-    aether_x6100ctrl_mode_usb_dig = 3, /*!< USB-D (changes audio input to USB codec (?)). */
-    aether_x6100ctrl_mode_cw = 4, /*!< CW. Keying CW is done in a "special way". */
-    aether_x6100ctrl_mode_cwr = 5, /*!< CW-R. Different keying settings vs CW (?) */
+    aether_x6100ctrl_mode_usb_dig =
+        3, /*!< USB-D (changes audio input to USB codec (?)). */
+    aether_x6100ctrl_mode_cw =
+        4, /*!< CW. Keying CW is done in a "special way". */
+    aether_x6100ctrl_mode_cwr =
+        5, /*!< CW-R. Different keying settings vs CW (?) */
     aether_x6100ctrl_mode_am = 6, /*!< AM. */
     aether_x6100ctrl_mode_nfm = 7 /*!< NFM. */
-} aether_x6100ctr_modem_t;
+  } aether_x6100ctr_modem_t;
 
-typedef enum
-{
+  typedef enum {
     aether_x6100ctrl_pre_off = 0,
     aether_x6100ctrl_pre_on = 1
-} aether_x6100ctr_pre_mode_t;
+  } aether_x6100ctr_pre_mode_t;
 
-enum
-{
+  enum {
     aether_x6100ctrl_sple = 0x00002,
     aether_x6100ctrl_voice_rec = 0x00008,
     aether_x6100ctrl_swrscan_trx = 0x00010,
@@ -130,11 +127,8 @@ enum
     aether_x6100ctrl_calibration_trx = 0x08000,
     aether_x6100ctrl_power_off = 0x10000,
     aether_x6100ctrl_iptt = 0x40000
-};
+  };
 
-/* Functions */
-
-AETHER_X6100CTRL_API bool aether_x6100ctrl_control_init();
-AETHER_X6100CTRL_API bool aether_x6100ctrl_control_cmd(aether_x6100ctr_cmds_t cmd, uint32_t arg);
-AETHER_X6100CTRL_API void aether_x6100ctrl_control_idle();
-AETHER_X6100CTRL_API void aether_x6100ctrl_control_set_band(uint32_t freq);
+#ifdef __cplusplus
+}
+#endif

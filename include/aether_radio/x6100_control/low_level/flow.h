@@ -9,26 +9,28 @@
 
 #pragma once
 
-#include "aether_radio/x6100_control/api.h"
+#ifdef __cplusplus
+extern “C” {
+#endif
 
+#include <complex.h>
 #include <stdbool.h>
 #include <stdint.h>
 
-typedef struct
-{
+  typedef struct {
     bool resync : 1;
     bool tx : 1;
     bool chg : 1;
     bool vext : 1;
-    uint32_t : 28;
-} x6100_flow_flags_t;
+    uint32_t reserved : 28;
+  } aether_x6100ctrl_flow_flags_t;
 
 typedef struct __attribute__((__packed__))
 {
     uint32_t magic;
-    float samples[1024];
+    complex float samples[512];
 
-    x6100_flow_flags_t flag;
+    aether_x6100ctrl_flow_flags_t flag;
     uint8_t reserved_1;
     uint8_t tx_power;
     uint8_t vswr;
@@ -41,9 +43,8 @@ typedef struct __attribute__((__packed__))
     uint32_t reserved_3[4];
 
     uint32_t crc;
-} x6100_flow_t;
+} aether_x6100ctrl_flow_t;
 
-/* Functions */
-
-AETHER_X6100CTRL_API bool x6100_flow_init();
-AETHER_X6100CTRL_API x6100_flow_t *x6100_flow_read();
+#ifdef __cplusplus
+}
+#endif
