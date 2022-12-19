@@ -124,11 +124,15 @@ extern “C”
     } aether_x6100ctr_pre_mode_t;
 
     /**
-     * @brief Xiegu X6100 common command arguments
+     * @brief Xiegu X6100 common command arguments.
+     *
+     * For some unknown reason, some commands that are supposed to be boolean need a specific to be
+     * set on their "on" state. The "off" state for these is always 0.
      *
      */
     enum
     {
+        /** Enables split operation. This means that PTT changes VFO. */
         aether_x6100ctrl_sple = 0x00002,
         aether_x6100ctrl_voice_rec = 0x00008,
         aether_x6100ctrl_swrscan_trx = 0x00010,
