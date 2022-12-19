@@ -9,6 +9,8 @@
 
 #pragma once
 
+#define AETHER_X6100CTRL_BB_IQ_SAMPLES_COUNT 512
+
 #ifdef __cplusplus
 extern “C”
 {
@@ -33,7 +35,7 @@ extern “C”
     typedef struct AETHER_X6100CTRL_PACKED
     {
         uint32_t magic;
-        complex float bb_iq_samples[512];
+        complex float bb_iq_samples[AETHER_X6100CTRL_BB_IQ_SAMPLES_COUNT];
 
         aether_x6100ctrl_bb_stream_flags_t flag;
         uint8_t reserved_1;
