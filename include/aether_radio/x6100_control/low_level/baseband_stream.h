@@ -37,7 +37,7 @@ extern “C”
         uint32_t magic;
         complex float bb_iq_samples[AETHER_X6100CTRL_BB_IQ_SAMPLES_COUNT];
 
-        aether_x6100ctrl_bb_stream_flags_t flag;
+        aether_x6100ctrl_bb_stream_flags_t flags;
         uint8_t reserved_1;
         uint8_t tx_power;
         uint8_t vswr;
