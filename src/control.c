@@ -97,7 +97,7 @@ void x6100_control_atu_tune(bool on)
 void x6100_control_poweroff() 
 {
     uint32_t prev = x6100_control_get(x6100_sple_atue_trx);
-    uint32_t next = prev & x6100_power_off;
+    uint32_t next = prev | x6100_power_off;
     
     x6100_control_cmd(x6100_sple_atue_trx, next);
     sleep(1);
