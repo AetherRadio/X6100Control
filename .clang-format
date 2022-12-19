@@ -1,8 +1,6 @@
 ---
 BasedOnStyle: Microsoft
 ColumnLimit: 100
-IndentExternBlock: AfterExternBlock
-BraceWrapping.AfterExternBlock: false
 AlignEscapedNewlines: Left
 AlignTrailingComments: false
 AllowShortBlocksOnASingleLine: Empty
