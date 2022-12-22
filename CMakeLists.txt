@@ -53,9 +53,7 @@ endif()
 add_library(aether_x6100_control)
 set_target_properties(
   aether_x6100_control
-  PROPERTIES EXPORT_NAME "aether_x6100_control" #
-             OUTPUT_NAME "aether_x6100_control" #
-             DEFINE_SYMBOL "AETHER_X6100CTRL_EXPORTING" #
+  PROPERTIES DEFINE_SYMBOL "AETHER_X6100CTRL_EXPORTING" #
              VERSION "${PROJECT_VERSION}" #
              SOVERSION "${PROJECT_VERSION_MAJOR}")
 
