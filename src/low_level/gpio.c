@@ -7,9 +7,9 @@
  *  Copyright (c) 2022 Rui Oliveira aka CT7ALW
  */
 
-#include "aether_radio/x6100_control/low_level/gpio.h"
-
 #include <fcntl.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
