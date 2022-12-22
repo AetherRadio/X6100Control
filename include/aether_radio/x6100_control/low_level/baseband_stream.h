@@ -18,7 +18,7 @@
 #define AETHER_X6100CTRL_BB_IQ_SAMPLES_COUNT 512
 
 #ifdef __cplusplus
-extern “C”
+extern "C"
 {
 #endif
 
