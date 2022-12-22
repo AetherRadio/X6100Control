@@ -7,16 +7,20 @@
  *  Copyright (c) 2022 Rui Oliveira aka CT7ALW
  */
 
-#include "aether_radio/x6100_control/low_level/flow.h"
+#define _GNU_SOURCE // enables memmem on string.h
+
+#include "aether_radio/x6100_control/low_level/baseband_stream.h"
 
 #include <fcntl.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <termios.h>
 #include <unistd.h>
 
-#define BUF_SIZE (sizeof(x6100_flow_t) * 3)
+#define BUF_SIZE (sizeof(aether_x6100ctrl_bb_frame_t) * 3)
 
 static int flow_fd;
 
@@ -62,7 +66,7 @@ bool x6100_flow_init()
     return true;
 }
 
-static x6100_flow_t *flow_check()
+static aether_x6100ctrl_bb_frame_t *flow_check()
 {
     uint8_t *begin = memmem(buf, buf_size, &magic, sizeof(magic));
 
@@ -70,11 +74,11 @@ static x6100_flow_t *flow_check()
     {
         uint32_t len = buf + buf_size - begin;
 
-        if (len >= sizeof(x6100_flow_t))
+        if (len >= sizeof(aether_x6100ctrl_bb_frame_t))
         {
-            uint8_t *tail_ptr = begin + sizeof(x6100_flow_t);
-            uint16_t tail_len = len - sizeof(x6100_flow_t);
-            x6100_flow_t *pack = begin;
+            uint8_t *tail_ptr = begin + sizeof(aether_x6100ctrl_bb_frame_t);
+            uint16_t tail_len = len - sizeof(aether_x6100ctrl_bb_frame_t);
+            aether_x6100ctrl_bb_frame_t *pack = begin;
 
             // TODO: check crc32
 
@@ -90,7 +94,7 @@ static x6100_flow_t *flow_check()
     return NULL;
 }
 
-x6100_flow_t *x6100_flow_read()
+aether_x6100ctrl_bb_frame_t *x6100_flow_read()
 {
     if (buf_size >= BUF_SIZE)
     {
@@ -105,7 +109,7 @@ x6100_flow_t *x6100_flow_read()
         buf_size += res;
         buf_read += res;
 
-        if (buf_size > sizeof(x6100_flow_t))
+        if (buf_size > sizeof(aether_x6100ctrl_bb_frame_t))
         {
             return flow_check();
         }

@@ -14,6 +14,8 @@
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
 #include <linux/i2c.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/ioctl.h>
@@ -27,7 +29,7 @@ typedef struct AETHER_X6100CTRL_PACKED
 typedef struct AETHER_X6100CTRL_PACKED
 {
     uint16_t addr;
-    uint32_t arg[x6100_last + 1];
+    uint32_t arg[aether_x6100ctrl_last + 1];
 } all_cmd_struct_t;
 
 static int i2c_fd = 0;
@@ -56,27 +58,27 @@ bool x6100_control_init()
 
     memset(&all_cmd, 0, sizeof(all_cmd));
 
-    all_cmd.arg[x6100_vfoa_ham_band] = 1;
-    all_cmd.arg[x6100_vfoa_freq] = 14074000;
-    all_cmd.arg[x6100_vfoa_mode] = x6100_mode_usb;
-    all_cmd.arg[x6100_vfoa_agc] = x6100_agc_auto;
+    all_cmd.arg[aether_x6100ctrl_vfoa_ham_band] = 1;
+    all_cmd.arg[aether_x6100ctrl_vfoa_freq] = 14074000;
+    all_cmd.arg[aether_x6100ctrl_vfoa_mode] = aether_x6100ctrl_mode_usb;
+    all_cmd.arg[aether_x6100ctrl_vfoa_agc] = aether_x6100ctrl_agc_auto;
 
-    all_cmd.arg[x6100_vfob_ham_band] = 1;
-    all_cmd.arg[x6100_vfob_freq] = 14074000;
-    all_cmd.arg[x6100_vfob_mode] = x6100_mode_usb;
-    all_cmd.arg[x6100_vfob_agc] = x6100_agc_auto;
+    all_cmd.arg[aether_x6100ctrl_vfob_ham_band] = 1;
+    all_cmd.arg[aether_x6100ctrl_vfob_freq] = 14074000;
+    all_cmd.arg[aether_x6100ctrl_vfob_mode] = aether_x6100ctrl_mode_usb;
+    all_cmd.arg[aether_x6100ctrl_vfob_agc] = aether_x6100ctrl_agc_auto;
 
-    all_cmd.arg[x6100_rxvol] = 0;
-    all_cmd.arg[x6100_rfg_txpwr] = (10 << 8) | 64;
+    all_cmd.arg[aether_x6100ctrl_rxvol] = 0;
+    all_cmd.arg[aether_x6100ctrl_rfg_txpwr] = (10 << 8) | 64;
 
-    all_cmd.arg[x6100_mode] = 500;
-    all_cmd.arg[x6100_filter1_low] = (uint32_t)50.0f;
-    all_cmd.arg[x6100_filter1_high] = (uint32_t)2950.0;
-    all_cmd.arg[x6100_filter2_low] = (uint32_t)50.0f;
-    all_cmd.arg[x6100_filter2_high] = (uint32_t)2950.0f;
+    all_cmd.arg[aether_x6100ctrl_mode] = 500;
+    all_cmd.arg[aether_x6100ctrl_filter1_low] = (uint32_t)50.0f;
+    all_cmd.arg[aether_x6100ctrl_filter1_high] = (uint32_t)2950.0;
+    all_cmd.arg[aether_x6100ctrl_filter2_low] = (uint32_t)50.0f;
+    all_cmd.arg[aether_x6100ctrl_filter2_high] = (uint32_t)2950.0f;
 
-    all_cmd.arg[x6100_pwrsync] = 2000000;
-    all_cmd.arg[x6100_last] = 0x100001;
+    all_cmd.arg[aether_x6100ctrl_pwrsync] = 2000000;
+    all_cmd.arg[aether_x6100ctrl_last] = 0x100001;
 
     return send_regs(&all_cmd, sizeof(all_cmd));
 }
@@ -209,6 +211,6 @@ void x6100_control_set_band(uint32_t freq)
     {
         cur_band = band;
 
-        x6100_control_cmd(x6100_vi_vm, cur_band << 8);
+        x6100_control_cmd(aether_x6100ctrl_vi_vm, cur_band << 8);
     }
 }
