@@ -11,9 +11,11 @@
 #ifdef __cplusplus
     #include <complex>
 
-    #define AETHER_X6100CTLR_FCOMPLEX std::complex<float>
+using aether_x6100ctrl_fcomplex_t = std::complex<float>;
+
 #else
     #include <complex.h>
 
-    #define AETHER_X6100CTLR_FCOMPLEX complex float
+typedef float complex aether_x6100ctrl_fcomplex_t;
+
 #endif

@@ -34,7 +34,7 @@ extern "C"
     typedef struct AETHER_X6100CTRL_PACKED
     {
         uint32_t magic;
-        AETHER_X6100CTLR_FCOMPLEX bb_iq_samples[AETHER_X6100CTRL_BB_IQ_SAMPLES_COUNT];
+        aether_x6100ctrl_fcomplex_t bb_iq_samples[AETHER_X6100CTRL_BB_IQ_SAMPLES_COUNT];
 
         aether_x6100ctrl_bb_stream_flags_t flags;
         uint8_t reserved_1;
