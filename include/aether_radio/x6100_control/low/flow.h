@@ -26,7 +26,7 @@ typedef struct
 typedef struct __attribute__((__packed__))
 {
     uint32_t magic;
-    float samples[1024];
+    _Complex float samples[512];
 
     x6100_flow_flags_t flag;
     uint8_t reserved_1;
@@ -46,4 +46,4 @@ typedef struct __attribute__((__packed__))
 /* Functions */
 
 AETHER_X6100CTRL_API bool x6100_flow_init();
-AETHER_X6100CTRL_API x6100_flow_t *x6100_flow_read();
+AETHER_X6100CTRL_API bool x6100_flow_read(x6100_flow_t *pack);

@@ -14,6 +14,8 @@
 #include <aether_radio/x6100_control/low/gpio.h>
 #include <aether_radio/x6100_control/low/flow.h>
 
+static x6100_flow_t pack;
+
 int main() {
     if (!x6100_control_init())
         return 1;
@@ -33,9 +35,7 @@ int main() {
     int band = 0;
 
     while (true) {
-        x6100_flow_t *pack = x6100_flow_read();
-
-        if (!pack) {
+        if (!x6100_flow_read(&pack)) {
             usleep(25000);
             continue;
         }
@@ -43,8 +43,8 @@ int main() {
         printf("[%i] tx=%d "
                "txpwr=%.1f swr=%.1f alc=%.1f vext=%.1f vbat=%.1f bat=%d CRC=%08X\n",
                count,
-               pack->flag.tx, pack->tx_power * 0.1, pack->vswr * 0.1f, pack->alc_level * 0.1,
-               pack->vext * 0.1f, pack->vbat * 0.1f, pack->batcap, pack->crc);
+               pack.flag.tx, pack.tx_power * 0.1, pack.vswr * 0.1f, pack.alc_level * 0.1,
+               pack.vext * 0.1f, pack.vbat * 0.1f, pack.batcap, pack.crc);
         
         if (count > 0) {
             count--;

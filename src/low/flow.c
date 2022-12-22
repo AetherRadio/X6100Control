@@ -62,7 +62,7 @@ bool x6100_flow_init()
     return true;
 }
 
-static x6100_flow_t *flow_check()
+static bool flow_check(x6100_flow_t *pack)
 {
     uint8_t *begin = memmem(buf, buf_size, &magic, sizeof(magic));
 
@@ -74,7 +74,8 @@ static x6100_flow_t *flow_check()
         {
             uint8_t *tail_ptr = begin + sizeof(x6100_flow_t);
             uint16_t tail_len = len - sizeof(x6100_flow_t);
-            x6100_flow_t *pack = begin;
+            
+            memcpy((void *) pack, (void *) begin, sizeof(x6100_flow_t));
 
             // TODO: check crc32
 
@@ -83,14 +84,14 @@ static x6100_flow_t *flow_check()
             buf_read = buf + tail_len;
             buf_size = tail_len;
 
-            return pack;
+            return true;
         }
     }
 
-    return NULL;
+    return false;
 }
 
-x6100_flow_t *x6100_flow_read()
+bool x6100_flow_read(x6100_flow_t *pack)
 {
     if (buf_size >= BUF_SIZE)
     {
@@ -107,9 +108,9 @@ x6100_flow_t *x6100_flow_read()
 
         if (buf_size > sizeof(x6100_flow_t))
         {
-            return flow_check();
+            return flow_check(pack);
         }
     }
 
-    return NULL;
+    return false;
 }

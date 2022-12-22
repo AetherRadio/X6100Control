@@ -14,19 +14,26 @@
 #include <aether_radio/x6100_control/low/flow.h>
 #include <aether_radio/x6100_control/low/gpio.h>
 
+#include <liquid/liquid.h>
+
+static          x6100_flow_t pack;
+unsigned int    nfft    = 100;
+unsigned int    buf_len = 512;
+
 int main() {
     if (!x6100_flow_init())
         return 1;
 
-    while (true) {
-        x6100_flow_t *pack = x6100_flow_read();
+    asgramcf q = asgramcf_create(nfft);
+    
+    asgramcf_set_scale  (q, -80.0f, 5.0f);
+    asgramcf_set_display(q, "...++++###");
 
-        if (pack)
+    while (true) {
+        if (x6100_flow_read(&pack))
         {
-            printf("tx=%d "
-                   "txpwr=%.1f swr=%.1f alc=%.1f vext=%.1f vbat=%.1f bat=%d CRC=%08X\n",
-                   pack->flag.tx, pack->tx_power * 0.1, pack->vswr * 0.1f, pack->alc_level * 0.1,
-                   pack->vext * 0.1f, pack->vbat * 0.1f, pack->batcap, pack->crc);
+            asgramcf_write(q, pack.samples, buf_len);
+            asgramcf_print(q);
         }
     }
 }
