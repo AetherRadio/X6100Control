@@ -72,7 +72,8 @@ extern "C"
         aether_x6100ctrl_txqofs,
 
         aether_x6100ctrl_pwrsync = 53,
-        aether_x6100ctrl_last = 55
+
+        aether_x6100ctrl_last = 55 /*!< Sentinel. */
     } aether_x6100ctr_cmds_t;
 
     /**
