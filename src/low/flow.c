@@ -62,6 +62,12 @@ bool x6100_flow_init()
     return true;
 }
 
+AETHER_X6100CTRL_API bool x6100_flow_restart() {
+    close(flow_fd);
+    
+    return x6100_flow_init();
+}
+
 static bool flow_check(x6100_flow_t *pack)
 {
     uint8_t *begin = memmem(buf, buf_size, &magic, sizeof(magic));

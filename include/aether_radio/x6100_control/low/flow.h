@@ -46,4 +46,8 @@ typedef struct __attribute__((__packed__))
 /* Functions */
 
 AETHER_X6100CTRL_API bool x6100_flow_init();
+
+/* Usually a packet arrives every 35ms, sometimes the serial port dies. And then you have to reset it. */
+
+AETHER_X6100CTRL_API bool x6100_flow_restart();
 AETHER_X6100CTRL_API bool x6100_flow_read(x6100_flow_t *pack);
