@@ -2,12 +2,12 @@
 
 source ./conf.sh
 
-PATH=${BUILDROOT}/build/host/bin:${PATH}
+PATH=${BUILDROOT}/host/bin:${PATH}
 
 /usr/bin/make \
-    DESTDIR=${BUILDROOT}/build/target \
+    DESTDIR=${BUILDROOT}/target \
     install/fast
 
 /usr/bin/make \
-    DESTDIR=${BUILDROOT}/build/host/arm-buildroot-linux-gnueabihf/sysroot \
+    DESTDIR=${BUILDROOT}/host/arm-buildroot-linux-gnueabihf/sysroot \
     install/fast
