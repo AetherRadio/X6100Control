@@ -64,8 +64,15 @@ bool x6100_flow_init()
 
 AETHER_X6100CTRL_API bool x6100_flow_restart() {
     close(flow_fd);
+
+    usleep(10000);
+
+    buf_read = buf;
+    buf_size = 0;
+
+    flow_fd = open("/dev/ttyS1", O_RDWR);
     
-    return x6100_flow_init();
+    return flow_fd > 0;
 }
 
 static bool flow_check(x6100_flow_t *pack)
