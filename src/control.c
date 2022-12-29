@@ -175,3 +175,16 @@ void x6100_control_calibration_set(bool on)
     
     x6100_control_cmd(x6100_sple_atue_trx, next);
 }
+
+void x6100_control_rfg_set(uint8_t rfg) {
+    uint32_t prev = x6100_control_get(x6100_rfg_txpwr) & (~0xFF);
+    
+    x6100_control_cmd(x6100_rfg_txpwr, prev | rfg);
+}
+
+void x6100_control_txpwr_set(float pwr) {
+    uint32_t prev = x6100_control_get(x6100_rfg_txpwr) & (0xFF);
+    uint8_t  p = pwr * 10.0f;
+    
+    x6100_control_cmd(x6100_rfg_txpwr, prev | (p << 8));
+}
