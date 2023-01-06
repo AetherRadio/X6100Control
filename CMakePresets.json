@@ -12,6 +12,7 @@
       "description": "Config using buildroot's toolchain",
       "toolchainFile": "${sourceDir}/../X6100Buildroot/build/host/share/buildroot/toolchainfile.cmake",
       "binaryDir": "${sourceDir}/build/buildroot",
+      "generator": "Unix Makefiles",
       "cacheVariables": {
         "AETHER_X6100CTRL_DEVELOPER_MODE": "ON",
         "AETHER_X6100CTRL_USE_FAST_MATH": "ON",
