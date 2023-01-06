@@ -7,4 +7,4 @@
 target_sources(
   aether_x6100_control #
   PUBLIC FILE_SET HEADERS #
-         FILES control.h baseband_stream.h)
+         FILES control.h baseband_stream.h baseband_stream.hpp)

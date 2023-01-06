@@ -34,8 +34,10 @@ extern "C"
 
     typedef struct AETHER_X6100CTRL_PACKED
     {
-        uint32_t magic; /*!< Every frame starts with AETHER_X6100CTRL_BB_FRAME_MAGIC */
+        /** Every frame starts with AETHER_X6100CTRL_BB_FRAME_MAGIC. */
+        uint32_t magic;
 
+        /** Baseband IQ samples. */
         aether_x6100ctrl_fcomplex_t bb_iq_samples[AETHER_X6100CTRL_BB_FRAME_IQ_SAMPLES_COUNT];
 
         aether_x6100ctrl_bb_frame_flags_t flags;
@@ -51,6 +53,7 @@ extern "C"
 
         uint8_t reserved_2;
 
+        /** The ATU params are useless to look at. */
         uint32_t atu_params;
 
         uint32_t reserved_3;
