@@ -3,8 +3,8 @@
  *
  * Aether Xiegu X6100 Control
  *
- * Copyright (c) 2022 Belousov Oleg aka R1CBU
- * Copyright (c) 2022 Rui Oliveira aka CT7ALW
+ * SPDX-FileCopyrightText: 2022 Belousov Oleg <www.strijar.ru>
+ * SPDX-FileCopyrightText: 2022 Rui Oliveira <ruimail24@gmail.com>
  */
 
 #define _GNU_SOURCE // enables memmem on string.h

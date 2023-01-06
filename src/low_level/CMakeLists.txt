@@ -2,6 +2,6 @@
 #
 # Aether Xiegu X6100 Control
 #
-# Copyright (c) 2022 Rui Oliveira aka CT7ALW
+# SPDX-FileCopyrightText: 2022 Rui Oliveira <ruimail24@gmail.com>
 
 target_sources(aether_x6100_control PRIVATE control.c flow.c gpio.c)

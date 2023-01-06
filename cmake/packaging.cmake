@@ -2,7 +2,7 @@
 #
 # Aether Xiegu X6100 Control
 #
-# Copyright (c) 2022 Rui Oliveira aka CT7ALW
+# SPDX-FileCopyrightText: 2022 Rui Oliveira <ruimail24@gmail.com>
 
 if(NOT PROJECT_IS_TOP_LEVEL)
   return()
