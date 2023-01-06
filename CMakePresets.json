@@ -1,0 +1,39 @@
+{
+  "version": 4,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 23,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "buildroot",
+      "displayName": "Buildroot config.",
+      "description": "Config using buildroot's toolchain",
+      "toolchainFile": "${sourceDir}/../X6100Buildroot/build/host/share/buildroot/toolchainfile.cmake",
+      "binaryDir": "${sourceDir}/build/buildroot",
+      "cacheVariables": {
+        "AETHER_X6100CTRL_DEVELOPER_MODE": "ON",
+        "CMAKE_INSTALL_PREFIX": "/usr",
+        "CMAKE_INSTALL_RUNSTATEDIR": "/run"
+      },
+      "environment": {
+        "PATH": "${sourceDir}/../X6100Buildroot/build/host/bin:$penv{PATH}"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "buildroot",
+      "configurePreset": "buildroot",
+      "output": { "outputOnFailure": true },
+      "execution": { "noTestsAction": "error", "stopOnFailure": true }
+    }
+  ]
+}
