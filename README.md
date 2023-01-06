@@ -25,8 +25,8 @@ cmake --preset=buildroot
 cd build/buildroot
 make
 BUILDROOT_DIR="../../../AetherX6100Buildroot/build"
-make DESTDIR=${BUILDROOT}/target install
-make DESTDIR=${BUILDROOT}/host/arm-buildroot-linux-gnueabihf/sysroot install
+make DESTDIR=${BUILDROOT_DIR}/target install
+make DESTDIR=${BUILDROOT_DIR}/host/arm-buildroot-linux-gnueabihf/sysroot install
 ```
 
 Then you can run `./br_make.sh` on the buildroot project, which will rebuild the
