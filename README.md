@@ -13,3 +13,12 @@ Most of the information present reverse was obtained from reverse-engineering
 the Xiegu X6100's front end app, called `x6100_ui_v100`. Credits go to Jet Yee,
 the original software developer, and the only software developer at Xiegu from
 what we know.
+
+## Licensing
+
+All code is licensed under the `SPDX-License-Identifier: LGPL-2.1-or-later`,
+unless explicitly stated otherwise.
+Further information can be found in the [`LICENSE`](./LICENSE) file.
+Files not supporting comments, and therefore not supporting license headers, are
+licensed under the same license, unless explicitly stated on accompanying
+information.
