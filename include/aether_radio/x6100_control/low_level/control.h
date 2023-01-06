@@ -1,10 +1,10 @@
 /*
- *  SPDX-License-Identifier: LGPL-2.1-or-later
+ * SPDX-License-Identifier: LGPL-2.1-or-later
  *
- *  Aether Xiegu X6100 Control
+ * Aether Xiegu X6100 Control
  *
- *  Copyright (c) 2022 Belousov Oleg a.k.a. R1CBU
- *  Copyright (c) 2022 Rui Oliveira a.k.a. CT7ALW
+ * Copyright (c) 2022 Belousov Oleg a.k.a. R1CBU
+ * Copyright (c) 2022 Rui Oliveira a.k.a. CT7ALW
  */
 
 #pragma once
