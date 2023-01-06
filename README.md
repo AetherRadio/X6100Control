@@ -5,6 +5,27 @@ and user-space applications.
 
 Now part of the [Aether-Radio project](https://github.com/AetherRadio).
 
+## How to build with CMake Presets
+
+`git clone` both this project and Ather-Radio's X6100Buildroot project into
+parallel directories, something like:
+
+```txt
+└── AetherRadio
+    ├── X6100Buildroot
+    └── X6100Control
+```
+
+First, make sure you build the buildroot project one.
+Then, you can invoke CMake with the following command, on this project's root,
+and then build and install as usual:
+
+```sh
+cmake --preset=buildroot
+cd build/buildroot
+make
+```
+
 ## Credits
 
 The original project belongs to [Oleg Belousov](https://github.com/strijar).

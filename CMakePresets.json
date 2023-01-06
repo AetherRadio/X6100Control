@@ -14,8 +14,7 @@
       "binaryDir": "${sourceDir}/build/buildroot",
       "cacheVariables": {
         "AETHER_X6100CTRL_DEVELOPER_MODE": "ON",
-        "CMAKE_INSTALL_PREFIX": "/usr",
-        "CMAKE_INSTALL_RUNSTATEDIR": "/run"
+        "AETHER_X6100CTRL_USE_FAST_MATH": "ON"
       },
       "environment": {
         "PATH": "${sourceDir}/../X6100Buildroot/build/host/bin:$penv{PATH}"
