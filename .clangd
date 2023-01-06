@@ -5,6 +5,6 @@
 #  Copyright (c) 2022 Rui Oliveira aka CT7ALW
 
 InlayHints:
-  Enabled: No
-  ParameterNames: No
-  DeducedTypes: No
+  Enabled: false
+  ParameterNames: false
+  DeducedTypes: false
