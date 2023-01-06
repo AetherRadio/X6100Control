@@ -8,7 +8,7 @@
   "configurePresets": [
     {
       "name": "buildroot",
-      "displayName": "Buildroot config.",
+      "displayName": "Buildroot developer config.",
       "description": "Config using buildroot's toolchain",
       "toolchainFile": "${sourceDir}/../X6100Buildroot/build/host/share/buildroot/toolchainfile.cmake",
       "binaryDir": "${sourceDir}/build/buildroot",
