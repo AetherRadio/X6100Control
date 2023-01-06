@@ -16,18 +16,10 @@ parallel directories, something like:
     └── X6100Control
 ```
 
-First, make sure you build the buildroot project one.
-Then, you can invoke CMake with the following command, on this project's root,
-and then build and install as usual:
-
-```bash
-cmake --preset=buildroot
-cd build/buildroot
-make
-BUILDROOT_DIR="../../../AetherX6100Buildroot/build"
-make DESTDIR=${BUILDROOT_DIR}/target install
-make DESTDIR=${BUILDROOT_DIR}/host/arm-buildroot-linux-gnueabihf/sysroot install
-```
+First, make sure you build the buildroot project once.
+Then, you can invoke CMake with the provided `./build_buildroot.sh` script on
+this project's root, that will build this project and install it into the
+buildroot project.
 
 Then you can run `./br_make.sh` on the buildroot project, which will rebuild the
 `sd_card.img` file.

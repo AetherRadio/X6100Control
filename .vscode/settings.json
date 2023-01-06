@@ -6,9 +6,5 @@
         ".clangd": "yaml",
         ".clang-tidy": "yaml",
         ".clazy": "yaml"
-    },
-    "cmake.configureSettings": {
-        "AETHER_X6100CTRL_DEVELOPER_MODE": "ON",
-        "AETHER_X6100CTRL_USE_FAST_MATH": "ON",
     }
 }
