@@ -38,8 +38,23 @@ what we know.
 
 ## Licensing
 
-The code is licensed under the `SPDX-License-Identifier: LGPL-2.1-or-later`,
-unless explicitly stated otherwise.
+The code in this project is licensed under the
+[`LGPL-2.1-or-later`](https://spdx.org/licenses/LGPL-2.1-or-later.html)
+SPDX License identifier, unless explicitly stated otherwise.
+
 Files not supporting comments, and therefore not supporting license headers, are
-licensed under the same license, unless explicitly stated on accompanying
-information.
+licensed under the same license, unless explicitly stated otherwise.
+
+The following files are licensed under the
+[`CC0-1.0`](https://spdx.org/licenses/CC0-1.0.html)
+PDX License identifier:
+
+- [`.cmake-format.json`](./.cmake-format.json)
+- [`CMakePresets.json`](./CMakePresets.json)
+
+With the following SPDX meta-data:
+
+```txt
+SPDX-License-Identifier: CC0-1.0
+SPDX-FileCopyrightText: 2022 Rui Oliveira <ruimail24@gmail.com>
+```
