@@ -4,6 +4,6 @@
 #
 # SPDX-FileCopyrightText: 2022 Rui Oliveira <ruimail24@gmail.com>
 
-target_sources(aether_x6100_control PUBLIC FILE_SET HEADERS FILES macros.h cpp_compat.h)
+target_sources(aether_x6100_control PUBLIC FILE_SET HEADERS FILES macros.h cpp_compat.h types.hpp)
 
 add_subdirectory(low_level)
