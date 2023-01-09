@@ -10,7 +10,6 @@
 #pragma once
 
 #include "aether_radio/x6100_control/cpp_compat.h"
-#include "aether_radio/x6100_control/macros.h"
 
 #ifndef __cplusplus
     #include <assert.h>

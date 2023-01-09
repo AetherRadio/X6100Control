@@ -10,6 +10,7 @@
 
 #include "aether_radio/x6100_control/api.h"
 #include "aether_radio/x6100_control/low_level/baseband_stream.h"
+#include "aether_radio/x6100_control/macros.h"
 
 namespace aether_radio::x6100ctrl::low_level
 {
