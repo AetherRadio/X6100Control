@@ -1,3 +1,6 @@
+[//]: # (SPDX-License-Identifier: CC0-1.0)
+[//]: # (SPDX-FileCopyrightText: 2022 Rui Oliveira <ruimail24@gmail.com>)
+
 # Aether X6100 Control
 
 A project to make an interface library between the radio's STM32 base controller
