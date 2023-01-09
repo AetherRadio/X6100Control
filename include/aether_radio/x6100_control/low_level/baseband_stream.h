@@ -12,11 +12,17 @@
 #include "aether_radio/x6100_control/cpp_compat.h"
 #include "aether_radio/x6100_control/macros.h"
 
-#include <stdbool.h>
-#include <stdint.h>
+#ifndef __cplusplus
+    #include <assert.h>
+    #include <stdbool.h>
+    #include <stdint.h>
+#else
+    #include <cstdint>
+#endif
 
 #define AETHER_X6100CTRL_BB_FRAME_IQ_SAMPLES_COUNT 512
 #define AETHER_X6100CTRL_BB_FRAME_MAGIC 0xAA5555AA
+#define AETHER_X6100CTRL_BB_FRAME_SIZE 4136
 
 #ifdef __cplusplus
 extern "C"
@@ -32,7 +38,14 @@ extern "C"
         uint32_t reserved : 28;
     } aether_x6100ctrl_bb_frame_flags_t;
 
-    typedef struct AETHER_X6100CTRL_PACKED
+    /**
+     * @brief De-serializing class from the baseband STM chip serial stream.
+     *
+     * I can't use the packed attribute for C++ compatibility here because:
+     * https://stackoverflow.com/q/75042880/5168563
+     * and https://gcc.gnu.org/bugzilla/show_bug.cgi?id=108342
+     */
+    typedef struct
     {
         /** Every frame starts with AETHER_X6100CTRL_BB_FRAME_MAGIC. */
         uint32_t magic;
@@ -67,3 +80,6 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif
+
+static_assert(sizeof(aether_x6100ctrl_bb_frame_t) == AETHER_X6100CTRL_BB_FRAME_SIZE,
+              "aether_x6100ctrl_bb_frame_t must be packed");
