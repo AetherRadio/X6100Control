@@ -14,6 +14,7 @@
 #include <linux/i2c.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/ioctl.h>
 
 typedef struct __attribute__((__packed__))
@@ -37,12 +38,9 @@ static uint8_t cur_band = 0;
 
 static bool send_regs(void *regs, size_t size)
 {
-    struct i2c_msg message = {i2c_addr, 0, size, regs};
-    struct i2c_rdwr_ioctl_data ioctl_data = {&message, 1};
+    int res = write(i2c_fd, regs, size);
 
-    int res = ioctl(i2c_fd, I2C_RDWR, &ioctl_data);
-
-    return (res > 0);
+    return (res == size);
 }
 
 bool x6100_control_init()
@@ -50,6 +48,9 @@ bool x6100_control_init()
     i2c_fd = open("/dev/i2c-0", O_RDWR);
 
     if (i2c_fd < 0)
+        return false;
+
+    if (ioctl(i2c_fd, I2C_SLAVE, i2c_addr) < 0)
         return false;
 
     memset(&all_cmd, 0, sizeof(all_cmd));
