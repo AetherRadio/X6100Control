@@ -13,6 +13,11 @@
 
 using aether_x6100ctrl_fcomplex_t = std::complex<float>;
 
+namespace aether_radio::x6100ctrl::types
+{
+using fcomplex_t = aether_x6100ctrl_fcomplex_t;
+} // namespace aether_radio::x6100ctrl::types
+
 #else
     #include <complex.h>
 
