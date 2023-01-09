@@ -8,8 +8,6 @@
 
 #pragma once
 
-#define AETHER_X6100CTRL_PACKED __attribute__((__packed__))
-
 #ifdef __cplusplus
 
     #define AETHER_X6100CTRL_DISABLE_COPY(some_class) \
