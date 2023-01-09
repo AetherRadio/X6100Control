@@ -34,7 +34,7 @@ class AETHER_X6100CTRL_API baseband_stream
     void start();
     void stop();
 
-    // TODO(ruilvo): add member functions to registar and unregister callbacks
+    // TODO(ruilvo): add member functions to register and unregister callbacks
 
   private:
     ~baseband_stream()
