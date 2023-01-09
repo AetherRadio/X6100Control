@@ -14,8 +14,37 @@
 namespace aether_radio::x6100ctrl::low_level
 {
 
-class AETHER_X6100CTRL_API baseband_steam
+/**
+ * @brief Class that controls the serial stream from the BB STM chip.
+ *
+ * Making this a singleton as the control over the serial stream should be a global thing. It makes
+ * no sense for there to be multiple instances of this class.
+ */
+class AETHER_X6100CTRL_API baseband_stream
 {
+  public:
+    static baseband_stream &instance()
+    {
+        static baseband_stream instance;
+        return instance;
+    };
+
+    AETHER_X6100CTRL_DISABLE_COPY_MOVE(baseband_stream)
+
+    void start();
+    void stop();
+
+    // TODO(ruilvo): add member functions to registar and unregister callbacks
+
+  private:
+    ~baseband_stream()
+    {
+        stop();
+    }
+
+    baseband_stream() = default;
+
+    bool started_;
 };
 
 } // namespace aether_radio::x6100ctrl::low_level
