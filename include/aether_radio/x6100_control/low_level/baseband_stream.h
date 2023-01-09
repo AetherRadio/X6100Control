@@ -81,5 +81,7 @@ extern "C"
 }
 #endif
 
-static_assert(sizeof(aether_x6100ctrl_bb_frame_t) == AETHER_X6100CTRL_BB_FRAME_SIZE,
-              "aether_x6100ctrl_bb_frame_t must be packed");
+// Asserts the size of `aether_x6100ctrl_bb_frame_t` is correct, i.e, corresponds to the packed
+// size.
+// Single liner in case the compiler doesn't have the non-macro version of static_assert.
+static_assert(sizeof(aether_x6100ctrl_bb_frame_t) == AETHER_X6100CTRL_BB_FRAME_SIZE);
