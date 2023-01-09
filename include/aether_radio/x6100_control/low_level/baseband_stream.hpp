@@ -14,6 +14,9 @@
 namespace aether_radio::x6100ctrl::low_level
 {
 
+using bb_frame_t = aether_x6100ctrl_bb_frame_t;
+using bb_frame_flags_t = aether_x6100ctrl_bb_frame_flags_t;
+
 /**
  * @brief Class that controls the serial stream from the BB STM chip.
  *
