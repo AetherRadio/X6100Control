@@ -117,6 +117,19 @@ enum
     x6100_iptt = 0x40000
 };
 
+typedef enum
+{
+    x6100_key_manual = 0,
+    x6100_key_auto_left = 1,
+    x6100_key_auto_right = 2
+} x6100_key_mode_t;
+
+typedef enum
+{
+    x6100_iambic_a = 0,
+    x6100_iambic_b = 1
+} x6100_iambic_mode_t;
+
 /* Functions */
 
 AETHER_X6100CTRL_API bool x6100_control_init();

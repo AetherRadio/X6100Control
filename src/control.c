@@ -188,3 +188,54 @@ void x6100_control_txpwr_set(float pwr) {
     
     x6100_control_cmd(x6100_rfg_txpwr, prev | (p << 8));
 }
+
+/* Keyer settings */
+
+void x6100_control_key_speed_set(uint8_t wpm) {
+    uint32_t prev = x6100_control_get(x6100_ks_km_kimb_cwtone_cwvol_cwtrain) & (~0xFF);
+    
+    x6100_control_cmd(x6100_ks_km_kimb_cwtone_cwvol_cwtrain, prev | wpm);
+}
+
+void x6100_control_key_mode_set(x6100_key_mode_t mode) {
+    uint32_t prev = x6100_control_get(x6100_ks_km_kimb_cwtone_cwvol_cwtrain) & (~(3 << 8));
+    
+    x6100_control_cmd(x6100_ks_km_kimb_cwtone_cwvol_cwtrain, prev | ((mode & 3) << 8));
+}
+
+void x6100_control_iambic_mode_set(x6100_iambic_mode_t mode) {
+    uint32_t prev = x6100_control_get(x6100_ks_km_kimb_cwtone_cwvol_cwtrain) & (~(3 << 10));
+    
+    x6100_control_cmd(x6100_ks_km_kimb_cwtone_cwvol_cwtrain, prev | ((mode & 3) << 10));
+}
+
+void x6100_control_key_tone_set(uint16_t tone) {
+    uint32_t prev = x6100_control_get(x6100_ks_km_kimb_cwtone_cwvol_cwtrain) & (~(0x7FF << 12));
+    
+    x6100_control_cmd(x6100_ks_km_kimb_cwtone_cwvol_cwtrain, prev | ((tone & 0x7FF) << 12));
+}
+
+void x6100_control_key_vol_set(uint16_t vol) {
+    uint32_t prev = x6100_control_get(x6100_ks_km_kimb_cwtone_cwvol_cwtrain) & (~(0x3F << 23));
+    
+    x6100_control_cmd(x6100_ks_km_kimb_cwtone_cwvol_cwtrain, prev | ((vol & 0x3F) << 23));
+}
+
+void x6100_control_key_train_set(bool train) {
+    uint32_t prev = x6100_control_get(x6100_ks_km_kimb_cwtone_cwvol_cwtrain) & (~(1 << 29));
+    
+    x6100_control_cmd(x6100_ks_km_kimb_cwtone_cwvol_cwtrain, prev | ((train & 1) << 29));
+}
+
+void x6100_control_qsk_time_set(uint16_t time) {
+    uint32_t prev = x6100_control_get(x6100_qsktime_kr) & (~(0xFFFF));
+
+    x6100_control_cmd(x6100_qsktime_kr, prev | (time & 0xFFFF));
+}
+
+void x6100_control_key_ratio_set(float ratio) {
+    uint32_t  prev = x6100_control_get(x6100_qsktime_kr) & (~(0xFFFF << 16));
+    uint16_t  r = ratio * 10.0f;
+
+    x6100_control_cmd(x6100_qsktime_kr, prev | ((r & 0xFFFF) << 16));
+}

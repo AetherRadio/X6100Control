@@ -45,3 +45,14 @@ AETHER_X6100CTRL_API void x6100_control_atu_set(bool on);           /* Toggle us
 AETHER_X6100CTRL_API void x6100_control_modem_set(bool on);         /* Toggle serial port for SMT32 firmware update */
 AETHER_X6100CTRL_API void x6100_control_swrscan_set(bool on);       /* Toggle SWR scan process */
 AETHER_X6100CTRL_API void x6100_control_calibration_set(bool on);   /* Toggle calibration process after update STM32 firmware */
+
+/* Keyer settings */
+
+AETHER_X6100CTRL_API void x6100_control_key_speed_set(uint8_t wpm);
+AETHER_X6100CTRL_API void x6100_control_key_mode_set(x6100_key_mode_t mode);
+AETHER_X6100CTRL_API void x6100_control_iambic_mode_set(x6100_iambic_mode_t mode);
+AETHER_X6100CTRL_API void x6100_control_key_tone_set(uint16_t tone);
+AETHER_X6100CTRL_API void x6100_control_key_vol_set(uint16_t vol);
+AETHER_X6100CTRL_API void x6100_control_key_train_set(bool train);
+AETHER_X6100CTRL_API void x6100_control_qsk_time_set(uint16_t time);
+AETHER_X6100CTRL_API void x6100_control_key_ratio_set(float ratio);
