@@ -130,6 +130,12 @@ typedef enum
     x6100_iambic_b = 1
 } x6100_iambic_mode_t;
 
+typedef enum {
+    x6100_mic_builtin = 0,
+    x6100_mic_handle,
+    x6100_mic_auto
+} x6100_mic_sel_t;
+
 /* Functions */
 
 AETHER_X6100CTRL_API bool x6100_control_init();

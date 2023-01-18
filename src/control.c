@@ -239,3 +239,33 @@ void x6100_control_key_ratio_set(float ratio) {
 
     x6100_control_cmd(x6100_qsktime_kr, prev | ((r & 0xFFFF) << 16));
 }
+
+void x6100_control_linein_set(uint8_t gain) {
+    uint32_t prev = x6100_control_get(x6100_ling_loutg_imicg_hmicg) & (~(0xFF));
+
+    x6100_control_cmd(x6100_ling_loutg_imicg_hmicg, prev | gain);
+}
+
+void x6100_control_lineout_set(uint8_t gain) {
+    uint32_t prev = x6100_control_get(x6100_ling_loutg_imicg_hmicg) & (~(0xFF << 8));
+
+    x6100_control_cmd(x6100_ling_loutg_imicg_hmicg, prev | (gain << 8));
+}
+
+void x6100_control_imic_set(uint8_t gain) {
+    uint32_t prev = x6100_control_get(x6100_ling_loutg_imicg_hmicg) & (~(0xFF << 16));
+
+    x6100_control_cmd(x6100_ling_loutg_imicg_hmicg, prev | (gain << 16));
+}
+
+void x6100_control_hmic_set(uint8_t gain) {
+    uint32_t prev = x6100_control_get(x6100_ling_loutg_imicg_hmicg) & (~(0xFF << 24));
+
+    x6100_control_cmd(x6100_ling_loutg_imicg_hmicg, prev | (gain << 24));
+}
+
+void x6100_control_mic_set(x6100_mic_sel_t mic) {
+    uint32_t prev = x6100_control_get(x6100_micsel_pttmode_chge_spmode_auxiqgen_sqlthr) & (~3);
+
+    x6100_control_cmd(x6100_micsel_pttmode_chge_spmode_auxiqgen_sqlthr, prev | mic);
+}

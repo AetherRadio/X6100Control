@@ -56,3 +56,14 @@ AETHER_X6100CTRL_API void x6100_control_key_vol_set(uint16_t vol);
 AETHER_X6100CTRL_API void x6100_control_key_train_set(bool train);
 AETHER_X6100CTRL_API void x6100_control_qsk_time_set(uint16_t time);
 AETHER_X6100CTRL_API void x6100_control_key_ratio_set(float ratio);
+
+/* Line's settings */
+
+AETHER_X6100CTRL_API void x6100_control_linein_set(uint8_t gain);
+AETHER_X6100CTRL_API void x6100_control_lineout_set(uint8_t gain);
+
+/* Mic settings */
+
+AETHER_X6100CTRL_API void x6100_control_imic_set(uint8_t gain);         /* Built-in MIC gain */
+AETHER_X6100CTRL_API void x6100_control_hmic_set(uint8_t gain);         /* Handle MIC gain */
+AETHER_X6100CTRL_API void x6100_control_mic_set(x6100_mic_sel_t mic);   /* MIC selector */
