@@ -269,3 +269,9 @@ void x6100_control_mic_set(x6100_mic_sel_t mic) {
 
     x6100_control_cmd(x6100_micsel_pttmode_chge_spmode_auxiqgen_sqlthr, prev | mic);
 }
+
+void x6100_control_vfo_set(x6100_vfo_t vfo) {
+    uint32_t prev = x6100_control_get(x6100_vi_vm) & (~(0xFF));
+
+    x6100_control_cmd(x6100_vi_vm, prev | vfo);
+}
