@@ -189,6 +189,12 @@ void x6100_control_txpwr_set(float pwr) {
     x6100_control_cmd(x6100_rfg_txpwr, prev | (p << 8));
 }
 
+void x6100_control_charger_set(bool on) {
+    uint32_t prev = x6100_control_get(x6100_micsel_pttmode_chge_spmode_auxiqgen_sqlthr) & (~(1 << 4));
+
+    x6100_control_cmd(x6100_micsel_pttmode_chge_spmode_auxiqgen_sqlthr, prev | (on << 4));
+}
+
 /* Keyer settings */
 
 void x6100_control_key_speed_set(uint8_t wpm) {
