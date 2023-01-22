@@ -281,3 +281,53 @@ void x6100_control_vfo_set(x6100_vfo_t vfo) {
 
     x6100_control_cmd(x6100_vi_vm, prev | vfo);
 }
+
+/* DSP */
+
+void x6100_control_dnf_set(bool on) {
+    uint32_t prev = x6100_control_get(x6100_dnfcnt_dnfwidth_dnfe) & (~(1 << 24));
+
+    x6100_control_cmd(x6100_dnfcnt_dnfwidth_dnfe, prev | (on << 24));
+}
+
+void x6100_control_dnf_center_set(uint16_t freq) {
+    uint32_t prev = x6100_control_get(x6100_dnfcnt_dnfwidth_dnfe) & (~(0xFFF));
+
+    x6100_control_cmd(x6100_dnfcnt_dnfwidth_dnfe, prev | (freq & 0xFFF));
+}
+
+void x6100_control_dnf_width_set(uint16_t hz) {
+    uint32_t prev = x6100_control_get(x6100_dnfcnt_dnfwidth_dnfe) & (~(0xFFF << 12));
+
+    x6100_control_cmd(x6100_dnfcnt_dnfwidth_dnfe, prev | ((hz & 0xFFF) << 12));
+}
+
+void x6100_control_nb_set(bool on) {
+    uint32_t prev = x6100_control_get(x6100_nrthr_nbw_nbthr_nre_nbe) & (~(1 << 25));
+
+    x6100_control_cmd(x6100_nrthr_nbw_nbthr_nre_nbe, prev | (on << 25));
+}
+
+void x6100_control_nb_level_set(uint8_t level) {
+    uint32_t prev = x6100_control_get(x6100_nrthr_nbw_nbthr_nre_nbe) & (~(0xFF << 16));
+
+    x6100_control_cmd(x6100_nrthr_nbw_nbthr_nre_nbe, prev | (level << 16));
+}
+
+void x6100_control_nb_width_set(uint8_t hz) {
+    uint32_t prev = x6100_control_get(x6100_nrthr_nbw_nbthr_nre_nbe) & (~(0xFF << 8));
+
+    x6100_control_cmd(x6100_nrthr_nbw_nbthr_nre_nbe, prev | (hz << 8));
+}
+
+void x6100_control_nr_set(bool on) {
+    uint32_t prev = x6100_control_get(x6100_nrthr_nbw_nbthr_nre_nbe) & (~(1 << 24));
+
+    x6100_control_cmd(x6100_nrthr_nbw_nbthr_nre_nbe, prev | (on << 24));
+}
+
+void x6100_control_nr_level_set(uint8_t level) {
+    uint32_t prev = x6100_control_get(x6100_nrthr_nbw_nbthr_nre_nbe) & (~0xFF);
+
+    x6100_control_cmd(x6100_nrthr_nbw_nbthr_nre_nbe, prev | level);
+}

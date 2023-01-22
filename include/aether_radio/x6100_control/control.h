@@ -70,3 +70,16 @@ AETHER_X6100CTRL_API void x6100_control_lineout_set(uint8_t gain);
 AETHER_X6100CTRL_API void x6100_control_imic_set(uint8_t gain);         /* Built-in MIC gain */
 AETHER_X6100CTRL_API void x6100_control_hmic_set(uint8_t gain);         /* Handle MIC gain */
 AETHER_X6100CTRL_API void x6100_control_mic_set(x6100_mic_sel_t mic);   /* MIC selector */
+
+/* DSP */
+
+AETHER_X6100CTRL_API void x6100_control_dnf_set(bool on);               /* Notch filter */
+AETHER_X6100CTRL_API void x6100_control_dnf_center_set(uint16_t freq);
+AETHER_X6100CTRL_API void x6100_control_dnf_width_set(uint16_t hz);
+
+AETHER_X6100CTRL_API void x6100_control_nb_set(bool on);                /* Noise blanker */
+AETHER_X6100CTRL_API void x6100_control_nb_level_set(uint8_t level);
+AETHER_X6100CTRL_API void x6100_control_nb_width_set(uint8_t hz);
+
+AETHER_X6100CTRL_API void x6100_control_nr_set(bool on);                /* Noise reduce */
+AETHER_X6100CTRL_API void x6100_control_nr_level_set(uint8_t level);
