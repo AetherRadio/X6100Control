@@ -195,6 +195,18 @@ void x6100_control_charger_set(bool on) {
     x6100_control_cmd(x6100_micsel_pttmode_chge_spmode_auxiqgen_sqlthr, prev | (on << 4));
 }
 
+void x6100_control_bias_drive_set(uint16_t x) {
+    uint32_t prev = x6100_control_get(x6100_biasdrive_biasfinal) & (0xFFFF);
+    
+    x6100_control_cmd(x6100_biasdrive_biasfinal, prev | x);
+}
+
+void x6100_control_bias_final_set(uint16_t x) {
+    uint32_t prev = x6100_control_get(x6100_biasdrive_biasfinal) & (0xFFFF << 16);
+    
+    x6100_control_cmd(x6100_biasdrive_biasfinal, prev | (x << 16));
+}
+
 /* Keyer settings */
 
 void x6100_control_key_speed_set(uint8_t wpm) {

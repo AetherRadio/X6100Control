@@ -48,6 +48,8 @@ AETHER_X6100CTRL_API void x6100_control_modem_set(bool on);         /* Toggle se
 AETHER_X6100CTRL_API void x6100_control_swrscan_set(bool on);       /* Toggle SWR scan process */
 AETHER_X6100CTRL_API void x6100_control_calibration_set(bool on);   /* Toggle calibration process after update STM32 firmware */
 AETHER_X6100CTRL_API void x6100_control_charger_set(bool on);       /* Toggle charger */
+AETHER_X6100CTRL_API void x6100_control_bias_drive_set(uint16_t x);
+AETHER_X6100CTRL_API void x6100_control_bias_final_set(uint16_t x);
 
 /* Keyer settings */
 
