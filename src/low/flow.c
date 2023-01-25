@@ -109,7 +109,7 @@ uint32_t calc_crc32(const uint32_t *data, uint16_t len)
 
 bool x6100_flow_init()
 {
-    flow_fd = open("/dev/ttyS1", O_RDWR);
+    flow_fd = open("/dev/ttyS1", O_RDWR | O_NONBLOCK| O_NOCTTY);
 
     if (flow_fd < 0)
         return false;
