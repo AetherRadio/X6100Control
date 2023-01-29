@@ -45,7 +45,7 @@ typedef enum
     x6100_cmplevel_cmpe,
 
     x6100_agcknee_agcslope_agchang = 27,
-    x6100_mode,
+    x6100_agctime,
     x6100_monilevel,
 
     x6100_ks_km_kimb_cwtone_cwvol_cwtrain = 33,

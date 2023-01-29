@@ -78,10 +78,13 @@ bool x6100_control_init()
     all_cmd.arg[x6100_vfob_mode] = x6100_mode_usb;
     all_cmd.arg[x6100_vfob_agc] = x6100_agc_auto;
 
+    all_cmd.arg[x6100_vi_vm] = 0x00000100;
     all_cmd.arg[x6100_rxvol] = 0;
     all_cmd.arg[x6100_rfg_txpwr] = (10 << 8) | 64;
-
-    all_cmd.arg[x6100_mode] = 500;
+    
+    all_cmd.arg[x6100_agcknee_agcslope_agchang] = 0x000006C4;
+    all_cmd.arg[x6100_agctime] = 500;
+    
     all_cmd.arg[x6100_filter1_low] = (uint32_t) 50.0f;
     all_cmd.arg[x6100_filter1_high] = (uint32_t) 2950.0;
     all_cmd.arg[x6100_filter2_low] = (uint32_t) 50.0f;

@@ -343,3 +343,27 @@ void x6100_control_nr_level_set(uint8_t level) {
 
     x6100_control_cmd(x6100_nrthr_nbw_nbthr_nre_nbe, prev | level);
 }
+
+/* AGC */
+
+void x6100_control_agc_hang_set(bool on) {
+    uint32_t prev = x6100_control_get(x6100_agcknee_agcslope_agchang) & (~(1 << 12));
+
+    x6100_control_cmd(x6100_agcknee_agcslope_agchang, prev | (on << 12));
+}
+
+void x6100_control_agc_knee_set(int8_t db) {
+    uint32_t prev = x6100_control_get(x6100_agcknee_agcslope_agchang) & (~0xFF);
+
+    x6100_control_cmd(x6100_agcknee_agcslope_agchang, prev | (db & 0xFF));
+}
+
+void x6100_control_agc_slope_set(uint8_t db) {
+    uint32_t prev = x6100_control_get(x6100_agcknee_agcslope_agchang) & (~(0xF << 8));
+
+    x6100_control_cmd(x6100_agcknee_agcslope_agchang, prev | (db << 8));
+}
+
+void x6100_control_agc_time_set(uint16_t ms) {
+    x6100_control_cmd(x6100_agctime, ms);
+}

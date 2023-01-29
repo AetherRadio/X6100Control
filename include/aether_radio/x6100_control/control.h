@@ -85,3 +85,10 @@ AETHER_X6100CTRL_API void x6100_control_nb_width_set(uint8_t hz);
 
 AETHER_X6100CTRL_API void x6100_control_nr_set(bool on);                /* Noise reduce */
 AETHER_X6100CTRL_API void x6100_control_nr_level_set(uint8_t level);
+
+/* AGC */
+
+AETHER_X6100CTRL_API void x6100_control_agc_hang_set(bool on);
+AETHER_X6100CTRL_API void x6100_control_agc_knee_set(int8_t db);
+AETHER_X6100CTRL_API void x6100_control_agc_slope_set(uint8_t db);
+AETHER_X6100CTRL_API void x6100_control_agc_time_set(uint16_t ms);
