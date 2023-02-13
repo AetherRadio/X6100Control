@@ -36,7 +36,6 @@ static int i2c_fd = 0;
 static int i2c_addr = 0x72;
 static all_cmd_struct_t all_cmd;
 static uint8_t cur_band = 0;
-static uint64_t refrash_time = 0;
 
 /* * */
 
@@ -45,8 +44,9 @@ static uint64_t get_time()
     struct timeval now;
     
     gettimeofday(&now, NULL);
+    uint64_t usec = (uint64_t) now.tv_sec * 1000000L + now.tv_usec;
 
-    return (now.tv_sec * 1000000 + now.tv_usec) / 1000;
+    return  usec / 1000;
 }
 
 static bool send_regs(void *regs, size_t size)
@@ -93,8 +93,6 @@ bool x6100_control_init()
     all_cmd.arg[x6100_pwrsync] = 2000000;
     all_cmd.arg[x6100_last] = 0x100001;
 
-    refrash_time = get_time();
-
     return send_regs(&all_cmd, sizeof(all_cmd));
 }
 
@@ -110,14 +108,7 @@ bool x6100_control_cmd(x6100_cmd_enum_t cmd, uint32_t arg)
     command.addr = (addr & 0xFF) << 8 | (addr >> 8);
     command.arg = arg;
 
-    if (now - refrash_time > REFRASH_TIMEOUT) {
-        send_regs(&all_cmd, sizeof(all_cmd));
-        refrash_time = now;
-    } else {
-        send_regs(&command, sizeof(command));
-    }
-
-    return true;
+    return send_regs(&command, sizeof(command));
 }
 
 uint32_t x6100_control_get(x6100_cmd_enum_t cmd)
@@ -127,7 +118,6 @@ uint32_t x6100_control_get(x6100_cmd_enum_t cmd)
 
 void x6100_control_idle()
 {
-    refrash_time = get_time();
     send_regs(&all_cmd, sizeof(all_cmd));
 }
 

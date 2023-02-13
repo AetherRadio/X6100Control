@@ -16,8 +16,9 @@
 #include <unistd.h>
 
 int x6100_pin_wifi;
-int x6100_pin_rf;
+int x6100_pin_usb;
 int x6100_pin_light;
+int x6100_pin_morse_key;
 
 static int gpio_open_value(uint16_t pin)
 {
@@ -86,10 +87,11 @@ static int gpio_open(uint16_t pin)
 bool x6100_gpio_init()
 {
     x6100_pin_wifi = gpio_open(357);
-    x6100_pin_rf = gpio_open(138);
+    x6100_pin_usb = gpio_open(138);
     x6100_pin_light = gpio_open(143);
+    x6100_pin_morse_key = gpio_open(203);
 
-    return (x6100_pin_wifi > 0) && (x6100_pin_rf > 0) && (x6100_pin_light > 0);
+    return (x6100_pin_wifi > 0) && (x6100_pin_usb > 0) && (x6100_pin_light > 0) && (x6100_pin_morse_key > 0);
 }
 
 void x6100_gpio_set(int pin, int value)

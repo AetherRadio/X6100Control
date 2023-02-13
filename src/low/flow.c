@@ -168,14 +168,14 @@ static bool flow_check(x6100_flow_t *pack)
         {
             uint8_t *tail_ptr = begin + sizeof(x6100_flow_t);
             uint16_t tail_len = len - sizeof(x6100_flow_t);
-            uint32_t crc = calc_crc32(begin, sizeof(x6100_flow_t) / 4 - 1);
-            x6100_flow_t *p = begin;
 
-            if (p->crc != crc) {
+            memcpy((void *) pack, (void *) begin, sizeof(x6100_flow_t));
+            
+            uint32_t crc = calc_crc32(pack, sizeof(x6100_flow_t) / 4 - 1);
+
+            if (pack->crc != crc) {
                 return false;
             }
-            
-            memcpy((void *) pack, (void *) begin, sizeof(x6100_flow_t));
 
             memmove(buf, tail_ptr, tail_len);
 

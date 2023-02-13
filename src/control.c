@@ -202,7 +202,7 @@ void x6100_control_bias_drive_set(uint16_t x) {
 }
 
 void x6100_control_bias_final_set(uint16_t x) {
-    uint32_t prev = x6100_control_get(x6100_biasdrive_biasfinal) & (0xFFFF << 16);
+    uint32_t prev = x6100_control_get(x6100_biasdrive_biasfinal) & ((uint32_t) 0xFFFF << 16);
     
     x6100_control_cmd(x6100_biasdrive_biasfinal, prev | (x << 16));
 }
@@ -252,7 +252,7 @@ void x6100_control_qsk_time_set(uint16_t time) {
 }
 
 void x6100_control_key_ratio_set(float ratio) {
-    uint32_t  prev = x6100_control_get(x6100_qsktime_kr) & (~(0xFFFF << 16));
+    uint32_t  prev = x6100_control_get(x6100_qsktime_kr) & (~((uint32_t) 0xFFFF << 16));
     uint16_t  r = ratio * 10.0f;
 
     x6100_control_cmd(x6100_qsktime_kr, prev | ((r & 0xFFFF) << 16));
@@ -277,7 +277,7 @@ void x6100_control_imic_set(uint8_t gain) {
 }
 
 void x6100_control_hmic_set(uint8_t gain) {
-    uint32_t prev = x6100_control_get(x6100_ling_loutg_imicg_hmicg) & (~(0xFF << 24));
+    uint32_t prev = x6100_control_get(x6100_ling_loutg_imicg_hmicg) & (~((uint32_t)0xFF << 24));
 
     x6100_control_cmd(x6100_ling_loutg_imicg_hmicg, prev | (gain << 24));
 }

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.23)
 
 project(
   AetherX6100Control
-  VERSION 0.10.0
+  VERSION 0.11.0
   LANGUAGES C CXX)
 
 # Options ------------------------------------------------------------------------------------------
@@ -87,3 +87,9 @@ add_subdirectory(src)
 # Install and packaging code
 include(cmake/installation.cmake)
 include(cmake/packaging.cmake)
+
+#target_compile_options(aether_x6100_control PRIVATE -g -fno-omit-frame-pointer -fasynchronous-unwind-tables)
+#target_link_options(aether_x6100_control PRIVATE -g -rdynamic)
+
+#target_compile_options(aether_x6100_control PRIVATE -fsanitize=address -fsanitize=undefined -fno-sanitize-recover)
+#target_link_options(aether_x6100_control PRIVATE -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -static-libasan -static-libubsan)
