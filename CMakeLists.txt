@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.23)
 
 project(
   AetherX6100Control
-  VERSION 0.11.0
+  VERSION 0.12.0
   LANGUAGES C CXX)
 
 # Options ------------------------------------------------------------------------------------------

@@ -207,6 +207,12 @@ void x6100_control_bias_final_set(uint16_t x) {
     x6100_control_cmd(x6100_biasdrive_biasfinal, prev | (x << 16));
 }
 
+void x6100_control_sql_set(uint8_t sql) {
+    uint32_t prev = x6100_control_get(x6100_micsel_pttmode_chge_spmode_auxiqgen_sqlthr) & (~(0xFF << 8));
+
+    x6100_control_cmd(x6100_micsel_pttmode_chge_spmode_auxiqgen_sqlthr, prev | (sql << 8));
+}
+
 /* Keyer settings */
 
 void x6100_control_key_speed_set(uint8_t wpm) {
