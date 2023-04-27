@@ -93,3 +93,10 @@ AETHER_X6100CTRL_API void x6100_control_agc_hang_set(bool on);
 AETHER_X6100CTRL_API void x6100_control_agc_knee_set(int8_t db);
 AETHER_X6100CTRL_API void x6100_control_agc_slope_set(uint8_t db);
 AETHER_X6100CTRL_API void x6100_control_agc_time_set(uint16_t ms);
+
+/* VOX */
+
+AETHER_X6100CTRL_API void x6100_control_vox_set(bool on);
+AETHER_X6100CTRL_API void x6100_control_vox_ag_set(uint8_t level);      /* 0 - 100% */
+AETHER_X6100CTRL_API void x6100_control_vox_delay_set(uint16_t ms);     /* 100 - 2000 ms */
+AETHER_X6100CTRL_API void x6100_control_vox_gain_set(uint8_t level);    /* 0 - 100% */
