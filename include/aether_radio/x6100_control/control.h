@@ -37,6 +37,7 @@ AETHER_X6100CTRL_API void x6100_control_sql_set(uint8_t sql);       /* Voice SQL
 
 AETHER_X6100CTRL_API void x6100_control_rxvol_set(uint8_t vol);     /* Speaker volume */
 AETHER_X6100CTRL_API void x6100_control_record_set(bool on);        /* Toggle audio stream mic/speaker or RX/TX audio */
+AETHER_X6100CTRL_API void x6100_control_spmode_set(bool phone);     /* Toggle Speaker/Phone audio out */
 
 /* Operation */
 

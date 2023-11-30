@@ -65,6 +65,13 @@ void x6100_control_record_set(bool on)
     x6100_control_cmd(x6100_sple_atue_trx, next);
 }
 
+void x6100_control_spmode_set(bool phone)
+{
+    uint32_t prev = x6100_control_get(x6100_micsel_pttmode_chge_spmode_auxiqgen_sqlthr) & (~(1 << 5));
+
+    x6100_control_cmd(x6100_micsel_pttmode_chge_spmode_auxiqgen_sqlthr, prev | (phone << 5));
+}
+
 /* Operation */
 
 void x6100_control_ptt_set(bool on) {
